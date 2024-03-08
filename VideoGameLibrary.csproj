@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-VideoGameLibrary-65e8318f-f75f-4edb-ad4a-a99b93616a43</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VideoGameLibrary.Common\VideoGameLibrary.Common.csproj" />
+  </ItemGroup>
+
+</Project>
