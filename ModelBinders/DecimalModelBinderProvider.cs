@@ -9,7 +9,6 @@ namespace VideoGameLibrary.ModelBinders
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
-
             }
 
             if (context.Metadata.ModelType == typeof(decimal)

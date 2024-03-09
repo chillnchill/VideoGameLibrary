@@ -37,8 +37,6 @@ namespace VideoGameLibrary.ModelBinders
                 }
             }
 
-
-
             return Task.CompletedTask;
         }
     }

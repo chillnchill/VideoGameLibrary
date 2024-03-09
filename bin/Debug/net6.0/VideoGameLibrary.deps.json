@@ -13,7 +13,11 @@
           "Microsoft.AspNetCore.Identity.UI": "6.0.25",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.25",
-          "VideoGameLibrary.Common": "1.0.0"
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data": "1.0.0",
+          "VideoGameLibrary.Data.Models": "1.0.0",
+          "VideoGameLibrary.Web.Infrastructure": "1.0.0",
+          "VideoGameLibrary.Web.ViewModels": "1.0.0"
         },
         "runtime": {
           "VideoGameLibrary.dll": {}
@@ -548,6 +552,35 @@
         "runtime": {
           "VideoGameLibrary.Common.dll": {}
         }
+      },
+      "VideoGameLibrary.Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25"
+        },
+        "runtime": {
+          "VideoGameLibrary.Data.dll": {}
+        }
+      },
+      "VideoGameLibrary.Data.Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "6.0.25",
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Data.Models.dll": {}
+        }
+      },
+      "VideoGameLibrary.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "VideoGameLibrary.Web.Infrastructure.dll": {}
+        }
+      },
+      "VideoGameLibrary.Web.ViewModels/1.0.0": {
+        "runtime": {
+          "VideoGameLibrary.Web.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -922,6 +955,26 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "VideoGameLibrary.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Web.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Web.ViewModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
