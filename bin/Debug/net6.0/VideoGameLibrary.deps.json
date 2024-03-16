@@ -16,6 +16,7 @@
           "VideoGameLibrary.Common": "1.0.0",
           "VideoGameLibrary.Data": "1.0.0",
           "VideoGameLibrary.Data.Models": "1.0.0",
+          "VideoGameLibrary.Services.Data": "1.0.0",
           "VideoGameLibrary.Web.Infrastructure": "1.0.0",
           "VideoGameLibrary.Web.ViewModels": "1.0.0"
         },
@@ -556,7 +557,9 @@
       "VideoGameLibrary.Data/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data.Models": "1.0.0"
         },
         "runtime": {
           "VideoGameLibrary.Data.dll": {}
@@ -565,14 +568,27 @@
       "VideoGameLibrary.Data.Models/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.UI": "6.0.25",
-          "VideoGameLibrary.Common": "1.0.0",
-          "VideoGameLibrary.Data": "1.0.0"
+          "VideoGameLibrary.Common": "1.0.0"
         },
         "runtime": {
           "VideoGameLibrary.Data.Models.dll": {}
         }
       },
+      "VideoGameLibrary.Services.Data/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data": "1.0.0",
+          "VideoGameLibrary.Data.Models": "1.0.0",
+          "VideoGameLibrary.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Services.Data.dll": {}
+        }
+      },
       "VideoGameLibrary.Web.Infrastructure/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Services.Data": "1.0.0"
+        },
         "runtime": {
           "VideoGameLibrary.Web.Infrastructure.dll": {}
         }
@@ -965,6 +981,11 @@
       "sha512": ""
     },
     "VideoGameLibrary.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Services.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,28 +1,40 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using VideoGameLibrary.Data;
+using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.ModelBinders;
+using VideoGameLibrary.Services.Data.Interfaces;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+string connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<VideoGameLibraryDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
-    options.Password.RequireDigit = builder.Configuration.GetValue<bool>("Identity:Password:RequireDigit");
-    options.Password.RequireLowercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
-    options.Password.RequireUppercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
-    options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
-    options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
-
+    options.SignIn.RequireConfirmedAccount =
+        builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+    options.Password.RequireLowercase =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+    options.Password.RequireUppercase =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+    options.Password.RequireNonAlphanumeric =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+    options.Password.RequiredLength =
+        builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 })
-.AddEntityFrameworkStores<ApplicationDbContext>();
+.AddEntityFrameworkStores<VideoGameLibraryDbContext>();
+
+builder.Services.AddApplicationServices(typeof(IGameService));
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<UserManager<ApplicationUser>>();
+
 
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
@@ -30,12 +42,16 @@ builder.Services.AddControllersWithViews()
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
     });
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+
     app.UseMigrationsEndPoint();
+    //this will show us exactly what went wrong in the web page whenever it booms
+    app.UseDeveloperExceptionPage();
+
 }
 else
 {
@@ -52,9 +68,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapDefaultControllerRoute();
 app.MapRazorPages();
 
 app.Run();

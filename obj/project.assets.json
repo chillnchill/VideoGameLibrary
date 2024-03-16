@@ -967,7 +967,9 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VideoGameLibrary.Data.dll": {}
@@ -981,8 +983,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.UI": "6.0.25",
-          "VideoGameLibrary.Common": "1.0.0",
-          "VideoGameLibrary.Data": "1.0.0"
+          "VideoGameLibrary.Common": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VideoGameLibrary.Data.Models.dll": {}
@@ -991,9 +992,28 @@
           "bin/placeholder/VideoGameLibrary.Data.Models.dll": {}
         }
       },
+      "VideoGameLibrary.Services.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0",
+          "VideoGameLibrary.Data": "1.0.0",
+          "VideoGameLibrary.Data.Models": "1.0.0",
+          "VideoGameLibrary.Web.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VideoGameLibrary.Services.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VideoGameLibrary.Services.Data.dll": {}
+        }
+      },
       "VideoGameLibrary.Web.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "VideoGameLibrary.Services.Data": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/VideoGameLibrary.Web.Infrastructure.dll": {}
         },
@@ -2517,6 +2537,11 @@
       "path": "../VideoGameLibrary.Data.Models/VideoGameLibrary.Data.Models.csproj",
       "msbuildProject": "../VideoGameLibrary.Data.Models/VideoGameLibrary.Data.Models.csproj"
     },
+    "VideoGameLibrary.Services.Data/1.0.0": {
+      "type": "project",
+      "path": "../VideoGameLibrary.Services.Data/VideoGameLibrary.Services.Data.csproj",
+      "msbuildProject": "../VideoGameLibrary.Services.Data/VideoGameLibrary.Services.Data.csproj"
+    },
     "VideoGameLibrary.Web.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../VideoGameLibrary.Web.Infrastructure/VideoGameLibrary.Web.Infrastructure.csproj",
@@ -2538,6 +2563,7 @@
       "VideoGameLibrary.Common >= 1.0.0",
       "VideoGameLibrary.Data >= 1.0.0",
       "VideoGameLibrary.Data.Models >= 1.0.0",
+      "VideoGameLibrary.Services.Data >= 1.0.0",
       "VideoGameLibrary.Web.Infrastructure >= 1.0.0",
       "VideoGameLibrary.Web.ViewModels >= 1.0.0"
     ]
@@ -2577,6 +2603,9 @@
             },
             "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Data\\VideoGameLibrary.Data.csproj": {
               "projectPath": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Data\\VideoGameLibrary.Data.csproj"
+            },
+            "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Services.Data\\VideoGameLibrary.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Services.Data\\VideoGameLibrary.Services.Data.csproj"
             },
             "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Web.Infrastructure\\VideoGameLibrary.Web.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Web.Infrastructure\\VideoGameLibrary.Web.Infrastructure.csproj"

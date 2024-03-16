@@ -1,0 +1,48 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Game
+@model IEnumerable<AllGamesViewModel>
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+
+@{
+    ViewData["Title"] = "All Games";
+}
+
+@if (!Model.Any())
+{
+    <div class="mt-4 p-5 bg-light">
+        <h1 class="display-4">Welcome to our game library!</h1>
+        <p class="lead">
+            There are currently no games available in the library.
+        </p>
+        <!-- Add a link to add games if user is authenticated -->
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="lead">
+                <a asp-controller="Game" asp-action="Add" class="btn btn-primary btn-lg" role="button">Add Game</a>
+            </p>
+        }
+    </div>
+}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var game in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@game.CoverImg" class="card-img-top" alt="@game.Title cover image">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Title</h5>
+                    <p class="card-text"><b>Developer:</b> @game.Developer</p>
+                    <p class="card-text"><b>Publisher:</b> @game.Publisher</p>
+                    <p class="card-text"><b>Genre:</b> @game.Genre</p>
+                    <p class="card-text"><b>Release Date:</b> @game.ReleaseDate</p>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id" class="btn btn-primary stretched-link">Details</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,23 @@
+﻿
+.text-shadow {
+    text-shadow: 0 0 6px #000;
+}
+
+h1 {
+    font-family: trajan-pro-3, serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #f3f4f6
+}
+
+.btn.btn-secondary {
+    text-align: center;
+    line-height: 3rem;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 0 6px #000;
+    cursor: pointer;
+    background-color: #4f5df2;
+    width: 16rem;
+    height: 4rem;
+}

@@ -19,6 +19,7 @@
     <ProjectReference Include="..\VideoGameLibrary.Common\VideoGameLibrary.Common.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Data.Models\VideoGameLibrary.Data.Models.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Data\VideoGameLibrary.Data.csproj" />
+    <ProjectReference Include="..\VideoGameLibrary.Services.Data\VideoGameLibrary.Services.Data.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Web.Infrastructure\VideoGameLibrary.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Web.ViewModels\VideoGameLibrary.Web.ViewModels.csproj" />
   </ItemGroup>

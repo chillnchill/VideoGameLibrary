@@ -87,3 +87,5 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\V
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Data.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Web.ViewModels.pdb
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.pdb

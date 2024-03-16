@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\VideoGameLibrary.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\landing.css",
+      "PackagePath": "staticwebassets\\css\\landing.css"
+    },
+    {
       "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\jquery-override.js",
+      "PackagePath": "staticwebassets\\js\\jquery-override.js"
     },
     {
       "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\site.js",

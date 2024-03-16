@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VhoACVfVnV63J3hXq0DX+T5zs5RZNmJPXVuRixYm3mY=",
+  "Hash": "5WuEts3oGA9R3TPdRh9vhwJlJPyvogG5EGKyO9yCgg8=",
   "Source": "VideoGameLibrary",
   "BasePath": "_content/VideoGameLibrary",
   "Mode": "Default",
@@ -1195,6 +1195,25 @@
       "OriginalItemSpec": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\VideoGameLibrary.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\landing.css",
+      "SourceId": "VideoGameLibrary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\",
+      "BasePath": "_content/VideoGameLibrary",
+      "RelativePath": "css/landing.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\landing.css"
+    },
+    {
       "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\site.css",
       "SourceId": "VideoGameLibrary",
       "SourceType": "Discovered",
@@ -1214,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\style.css",
+      "SourceId": "VideoGameLibrary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\",
+      "BasePath": "_content/VideoGameLibrary",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
       "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\favicon.ico",
       "SourceId": "VideoGameLibrary",
       "SourceType": "Discovered",
@@ -1231,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\jquery-override.js",
+      "SourceId": "VideoGameLibrary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\",
+      "BasePath": "_content/VideoGameLibrary",
+      "RelativePath": "js/jquery-override.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery-override.js"
     },
     {
       "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\site.js",
