@@ -587,6 +587,7 @@
       },
       "VideoGameLibrary.Web.Infrastructure/1.0.0": {
         "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0",
           "VideoGameLibrary.Services.Data": "1.0.0"
         },
         "runtime": {

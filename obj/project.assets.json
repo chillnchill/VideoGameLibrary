@@ -1012,6 +1012,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0",
           "VideoGameLibrary.Services.Data": "1.0.0"
         },
         "compile": {

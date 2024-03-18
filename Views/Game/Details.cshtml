@@ -1,0 +1,34 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Game
+@model GameDetailsViewModel
+
+@{
+    ViewData["Title"] = "Game Details";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.CoverImg" alt="@Model.Title cover image" class="img-thumbnail">
+    </div>
+    <div class="col-md-8">
+        <h1>@Model.Title</h1>
+        <p>@Model.Description</p>
+        <ul class="list-group">
+            <li class="list-group-item">Released On: @Model.ReleaseDate</li>
+            <li class="list-group-item">Price: $@Model.Price</li>
+            <li class="list-group-item">
+                Game Length:
+                @if (@Model.GameLength.HasValue)
+                {
+                    @Model.GameLength
+                }
+                else
+                {
+                    <p> Not specified </p>
+                }
+            </li>
+            <li class="list-group-item">Number of Players: @Model.NumberOfPlayers</li>
+            <li class="list-group-item">Genre: @Model.Genre</li>
+            <li class="list-group-item">Platform: @Model.Platform</li>
+        </ul>
+    </div>
+</div>

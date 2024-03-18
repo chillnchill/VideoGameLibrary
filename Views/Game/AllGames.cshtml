@@ -27,21 +27,18 @@
     @foreach (var game in Model)
     {
         <div class="col">
-            <div class="card">
-                <img src="@game.CoverImg" class="card-img-top" alt="@game.Title cover image">
-                <div class="card-body">
-                    <h5 class="card-title">@game.Title</h5>
-                    <p class="card-text"><b>Developer:</b> @game.Developer</p>
-                    <p class="card-text"><b>Publisher:</b> @game.Publisher</p>
-                    <p class="card-text"><b>Genre:</b> @game.Genre</p>
-                    <p class="card-text"><b>Release Date:</b> @game.ReleaseDate</p>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id" class="btn btn-primary stretched-link">Details</a>
-                    }
+            <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id" class="text-decoration-none text-dark">
+                <div class="card">
+                    <img src="@game.CoverImg" class="card-img-top" alt="@game.Title cover image">
+                    <div class="card-body">
+                        <h5 class="card-title">@game.Title</h5>
+                        <p class="card-text"><b>Developer:</b> @game.Developer</p>
+                        <p class="card-text"><b>Publisher:</b> @game.Publisher</p>
+                        <p class="card-text"><b>Genre:</b> @game.Genre</p>
+                        <p class="card-text"><b>Release Date:</b> @game.ReleaseDate</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     }
 </div>
