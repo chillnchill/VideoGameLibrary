@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DoZ5hUa/kpe/JYX2Ec6jspYDqrWK+i27bH2+/hgLNJM+xHwilysZr81+7geVuTzcJ7+FWUktgYdL81L+mAJH1Q==",
+  "dgSpecHash": "eQsOiZexlD9KBXoZC5e9sZu+j8m1py809jwADig5QSZDyZclc/YaIw4PueniZ6N21tgiJIa+Juz7hJQc9h1kVQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\VideoGameLibrary.csproj",
   "expectedPackageFiles": [
@@ -42,6 +42,7 @@
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\jojoc\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
@@ -55,6 +56,8 @@
     "C:\\Users\\jojoc\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
+    "C:\\Users\\jojoc\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\jojoc\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []

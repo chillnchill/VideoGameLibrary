@@ -1,0 +1,109 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game
+
+@model GameFormModel
+
+@{
+    ViewData["Title"] = "Add New Game";
+}
+
+<h2>Add New Game</h2>
+<hr />
+
+<form asp-controller="Game" asp-action="Add" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="Title" value="@Model.Title">
+        <div class="invalid-feedback">Please provide a valid title.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="Description">@Model.Description</textarea>
+        <div class="invalid-feedback">Please provide a valid description.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="coverImg" class="form-label">Cover Image Link</label>
+        <input type="text" class="form-control" id="coverImg" name="CoverImg" value="@Model.CoverImg">
+        <div class="invalid-feedback">Please provide a valid cover image link.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="developer" class="form-label">Developer</label>
+        <input type="text" class="form-control" id="developer" name="Developer" value="@Model.Developer">
+        <div class="invalid-feedback">Please provide a valid developer name.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="publisher" class="form-label">Publisher</label>
+        <input type="text" class="form-control" id="publisher" name="Publisher" value="@Model.Publisher">
+        <div class="invalid-feedback">Please provide a valid publisher name.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="releaseDate" class="form-label">Release Date</label>
+        <input type="date" class="form-control" id="releaseDate" name="ReleaseDate" value="@Model.ReleaseDate">
+        <div class="invalid-feedback">Please provide a valid release date.</div>
+    </div>
+
+    <!-- Add labels for all input fields -->
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" name="Price" value="@Model.Price">
+        <div class="invalid-feedback">Please provide a valid price.</div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PlatformId">Platform</label>
+        <select asp-for="PlatformId" class="form-control">
+            @foreach (var category in Model.Platform)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="PlatformId" class="small text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreId">Genre</label>
+        <select asp-for="GenreId" class="form-control">
+            @foreach (var category in Model.Genre)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="GenreId" class="small text-danger"></span>
+    </div>
+
+    <!-- Additional fields wrapped in collapsible section -->
+    <button type="button" class="btn btn-secondary mb-3" data-bs-toggle="collapse" data-bs-target="#optionalDetails">
+        Additional Fields
+    </button>
+
+    <div class="collapse" id="optionalDetails">
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="text" class="form-control" id="rating" name="Rating" value="@Model.Rating">
+            <div class="invalid-feedback">Please provide a valid rating.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="gameLength" class="form-label">Game Length</label>
+            <input type="number" class="form-control" id="gameLength" name="GameLength" value="@Model.GameLength">
+            <div class="invalid-feedback">Please provide a valid game length.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="numberOfPlayers" class="form-label">Number of Players</label>
+            <input type="number" class="form-control" id="numberOfPlayers" name="NumberOfPlayers" value="@Model.NumberOfPlayers">
+            <div class="invalid-feedback">Please provide a valid number of players.</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Game</button>
+</form>
