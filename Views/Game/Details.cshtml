@@ -15,20 +15,30 @@
         <ul class="list-group">
             <li class="list-group-item">Released On: @Model.ReleaseDate</li>
             <li class="list-group-item">Price: $@Model.Price</li>
-            <li class="list-group-item">
-                Game Length:
-                @if (@Model.GameLength.HasValue)
-                {
-                    @Model.GameLength
-                }
-                else
-                {
-                    <p> Not specified </p>
-                }
-            </li>
-            <li class="list-group-item">Number of Players: @Model.NumberOfPlayers</li>
+            @if (Model.NumberOfStars.HasValue)
+            {
+                <li class="list-group-item">
+                    Rating:
+                    @{
+                        int numberOfFullStars = (int)Model.NumberOfStars.Value;
+                        int numberOfEmptyStars = 5 - numberOfFullStars;
+                    }
+                    @for (int i = 0; i < numberOfFullStars; i++)
+                    {
+                        <span class="fa fa-star checked"></span>
+                    }
+                    @for (int i = 0; i < numberOfEmptyStars; i++)
+                    {
+                        <span class="fa fa-star"></span>
+                    }
+                </li>
+            }
             <li class="list-group-item">Genre: @Model.Genre</li>
             <li class="list-group-item">Platform: @Model.Platform</li>
         </ul>
+        @if (Model.IsOwner)
+        {
+            <a href="@Url.Action("Edit", "Game", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+        }
     </div>
 </div>
