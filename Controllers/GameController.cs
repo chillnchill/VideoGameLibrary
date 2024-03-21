@@ -53,7 +53,6 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(GameFormModel model)
         {
            
@@ -191,6 +190,42 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+			bool gameExists = await gameService.ExistsByIdAsync(id);
+
+			if (!gameExists)
+			{
+				TempData[ErrorMessage] = "Game with the provided id does not exist!";
+				return RedirectToAction("AllGames", "Game");
+			}
+
+			string userId = User.GetId()!;
+			bool isUserOwner = await gameService
+			   .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+
+			if (!isUserOwner)
+			{
+				TempData[ErrorMessage] = "You must be the game owner!";
+
+				return RedirectToAction("AllGames", "Game");
+			}
+
+			try
+			{
+				DeleteViewModel model = await gameService
+					.GetGameForDeletion(id);
+				return View(model);
+			}
+			catch (Exception)
+			{
+				return GeneralError();
+			}
+
+		}
+
+
+		[HttpGet]
         public async Task<IActionResult> Details(string id)
         {
             if (!User.Identity.IsAuthenticated)

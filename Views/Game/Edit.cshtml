@@ -11,49 +11,48 @@
 
 <form asp-controller="Game" asp-action="Edit" method="post">
     <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="Title" value="@Model.Title">
-        <div class="invalid-feedback">Please provide a valid title.</div>
+        <label asp-for="@Model.Title" class="form-label-add-edit">Title</label>
+        <input asp-for="@Model.Title" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Title" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="Description">@Model.Description</textarea>
-        <div class="invalid-feedback">Please provide a valid description.</div>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="coverImg" class="form-label">Cover Image Link</label>
-        <input type="text" class="form-control" id="coverImg" name="CoverImg" value="@Model.CoverImg">
-        <div class="invalid-feedback">Please provide a valid cover image link.</div>
+        <label asp-for="@Model.Description" class="form-label-add-edit">Description</label>
+        <input asp-for="@Model.Description" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Description" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label for="developer" class="form-label">Developer</label>
-        <input type="text" class="form-control" id="developer" name="Developer" value="@Model.Developer">
-        <div class="invalid-feedback">Please provide a valid developer name.</div>
+        <label asp-for="@Model.CoverImg" class="form-label-add-edit">Cover Image</label>
+        <input asp-for="@Model.CoverImg" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.CoverImg" class="text-danger"></span>
     </div>
 
-
     <div class="mb-3">
-        <label for="publisher" class="form-label">Publisher</label>
-        <input type="text" class="form-control" id="publisher" name="Publisher" value="@Model.Publisher">
-        <div class="invalid-feedback">Please provide a valid publisher name.</div>
+        <label asp-for="@Model.Developer" class="form-label-add-edit">Developer</label>
+        <input asp-for="@Model.Developer" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Developer" class="text-danger"></span>
     </div>
 
 
     <div class="mb-3">
-        <label for="releaseDate" class="form-label">Release Date</label>
-        <input type="date" class="form-control" id="releaseDate" name="ReleaseDate" value="@Model.ReleaseDate">
-        <div class="invalid-feedback">Please provide a valid release date.</div>
+        <label asp-for="@Model.Publisher" class="form-label-add-edit">Publisher</label>
+        <input asp-for="@Model.Publisher" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Publisher" class="text-danger"></span>
     </div>
 
 
     <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" name="Price" value="@Model.Price">
-        <div class="invalid-feedback">Please provide a valid price.</div>
+        <label asp-for="@Model.ReleaseDate" class="form-label-add-edit">Release Date</label>
+        <input asp-for="@Model.ReleaseDate" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.ReleaseDate" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="@Model.Price" class="form-label-add-edit">Price</label>
+        <input asp-for="@Model.Price" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Price" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -79,21 +78,21 @@
     </div>
 
     <!-- Additional fields wrapped in collapsible section -->
-    <button type="button" class="btn btn-secondary mb-3" data-bs-toggle="collapse" data-bs-target="#optionalDetails">
+    <button type="button" class="btn btn-secondary mb-3 mt-3" data-bs-toggle="collapse" data-bs-target="#optionalDetails">
         Additional Fields
     </button>
 
     <div class="collapse" id="optionalDetails">
         <div class="mb-3">
-            <label for="rating" class="form-label">Rating</label>
-            <input type="text" class="form-control" id="rating" name="Rating" value="@Model.Rating">
-            <div class="invalid-feedback">Please provide a valid rating.</div>
+            <label asp-for="@Model.Rating" class="form-label-add-edit">Rating</label>
+            <input asp-for="@Model.Rating" class="form-control" aria-required="true" />
+            <span asp-validation-for="@Model.Rating" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label for="numberOfStars" class="form-label">Number of Stars</label>
-            <input type="number" class="form-control" id="NumberOfStars" name="NumberOfStars" value="@Model.NumberOfStars">
-            <div class="invalid-feedback">Please provide a valid number of players.</div>
+            <label asp-for="@Model.NumberOfStars" class="form-label-add-edit">Number of Stars</label>
+            <input asp-for="@Model.NumberOfStars" class="form-control" aria-required="true" />
+            <span asp-validation-for="@Model.NumberOfStars" class="text-danger"></span>
         </div>
     </div>
 

@@ -2,43 +2,45 @@
 @model GameDetailsViewModel
 
 @{
-    ViewData["Title"] = "Game Details";
+	ViewData["Title"] = "Game Details";
 }
 
 <div class="row">
-    <div class="col-md-4">
-        <img src="@Model.CoverImg" alt="@Model.Title cover image" class="img-thumbnail">
-    </div>
-    <div class="col-md-8">
-        <h1>@Model.Title</h1>
-        <p>@Model.Description</p>
-        <ul class="list-group">
-            <li class="list-group-item">Released On: @Model.ReleaseDate</li>
-            <li class="list-group-item">Price: $@Model.Price</li>
-            @if (Model.NumberOfStars.HasValue)
-            {
-                <li class="list-group-item">
-                    Rating:
-                    @{
-                        int numberOfFullStars = (int)Model.NumberOfStars.Value;
-                        int numberOfEmptyStars = 5 - numberOfFullStars;
-                    }
-                    @for (int i = 0; i < numberOfFullStars; i++)
-                    {
-                        <span class="fa fa-star checked"></span>
-                    }
-                    @for (int i = 0; i < numberOfEmptyStars; i++)
-                    {
-                        <span class="fa fa-star"></span>
-                    }
-                </li>
-            }
-            <li class="list-group-item">Genre: @Model.Genre</li>
-            <li class="list-group-item">Platform: @Model.Platform</li>
-        </ul>
-        @if (Model.IsOwner)
-        {
-            <a href="@Url.Action("Edit", "Game", new { id = Model.Id })" class="btn btn-primary">Edit</a>
-        }
-    </div>
+	<div class="col-md-4">
+		<img src="@Model.CoverImg" alt="@Model.Title cover image" class="img-thumbnail">
+	</div>
+	<div class="col-md-8">
+		<h1>@Model.Title</h1>
+		<p>@Model.Description</p>
+		<ul class="list-group">
+			<li class="list-group-item">Released On: @Model.ReleaseDate</li>
+			<li class="list-group-item">Price: $@Model.Price</li>
+			@if (Model.NumberOfStars.HasValue)
+			{
+				<li class="list-group-item">
+					Rating:
+					@{
+						int numberOfFullStars = (int)Model.NumberOfStars.Value;
+						int numberOfEmptyStars = 5 - numberOfFullStars;
+					}
+					@for (int i = 0; i < numberOfFullStars; i++)
+					{
+						<span class="fa fa-star checked"></span>
+					}
+					@for (int i = 0; i < numberOfEmptyStars; i++)
+					{
+						<span class="fa fa-star"></span>
+					}
+				</li>
+			}
+			<li class="list-group-item">Genre: @Model.Genre</li>
+			<li class="list-group-item">Platform: @Model.Platform</li>
+		</ul>
+		@if (Model.IsOwner)
+		{
+			<a href="@Url.Action("Edit", "Game", new { id = Model.Id })" class="btn btn-primary mt-3">Edit</a>
+			<a href="@Url.Action("Delete", "Game", new { id = Model.Id })" class="btn btn-danger mt-3">Delete</a>
+		}
+
+	</div>
 </div>
