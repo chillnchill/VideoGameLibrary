@@ -4,6 +4,9 @@ using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.ViewModels.Game;
 using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
+using Microsoft.EntityFrameworkCore;
+using VideoGameLibrary.Data.Models;
+using Microsoft.Extensions.Logging;
 
 
 namespace VideoGameLibrary.Controllers
@@ -53,13 +56,11 @@ namespace VideoGameLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(GameFormModel model)
         {
-            
-
+           
             bool platformsExist =
                 await platformService.ExistsByIdAsync(model.PlatformId);
             if (!platformsExist)
             {
-                // Adding model error to ModelState automatically makes ModelState Invalid
                 ModelState.AddModelError(nameof(model.PlatformId), "Selected platform does not exist!");
             }
 
@@ -67,7 +68,6 @@ namespace VideoGameLibrary.Controllers
                 await genreService.ExistsByIdAsync(model.GenreId);
             if (!genresExist)
             {
-                // Adding model error to ModelState automatically makes ModelState Invalid
                 ModelState.AddModelError(nameof(model.GenreId), "Selected genre does not exist!");
             }
 
@@ -76,10 +76,10 @@ namespace VideoGameLibrary.Controllers
                 model.Platform = await platformService.AllPlatformsAsync();
                 model.Genre = await genreService.AllGenresAsync();
 
-                var errors = ModelState
-                    .Where(x => x.Value.Errors.Count > 0)
-                    .Select(x => new { x.Key, x.Value.Errors })
-                    .ToArray();
+                //var errors = ModelState
+                //    .Where(x => x.Value.Errors.Count > 0)
+                //    .Select(x => new { x.Key, x.Value.Errors })
+                //    .ToArray();
 
 
                 return View(model);
@@ -102,6 +102,93 @@ namespace VideoGameLibrary.Controllers
             }
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            var gameExists = await gameService.ExistsByIdAsync(id);
+
+            if (!gameExists)
+            {
+                TempData[ErrorMessage] = "A Game with the provided id does not exist!";
+
+                return RedirectToAction("AllGames", "Game");
+            }
+
+            string userId = User.GetId()!;
+            bool isUserOwner = await gameService
+               .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+
+            if (!isUserOwner)
+            {
+                TempData[ErrorMessage] = "You must be the game owner if you want to edit!";
+
+                return RedirectToAction("Details", "Game");
+            }
+
+            try
+            {
+                GameFormModel model = await gameService
+                    .GetGameForEditByIdAsync(id);
+                model.Platform = await platformService.AllPlatformsAsync();
+                model.Genre = await genreService.AllGenresAsync();
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, GameFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Platform = await platformService.AllPlatformsAsync();
+                model.Genre = await genreService.AllGenresAsync();
+
+                return View(model);
+            }
+
+            var gameExists = await gameService.ExistsByIdAsync(id);
+
+            if (!gameExists)
+            {
+                TempData[ErrorMessage] = "A Game with the provided id does not exist!";
+
+                return RedirectToAction("AllGames", "Game");
+            }
+
+            string userId = User.GetId()!;
+            bool isUserOwner = await gameService
+               .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+
+            if (!isUserOwner)
+            {
+                TempData[ErrorMessage] = "You must be the game owner if you want to edit!";
+
+                return RedirectToAction("AllGames", "Game");
+            }
+
+            try
+            {
+                await gameService.EditHouseByIdAsync(model, id);
+                TempData[SuccessMessage] = "Game edited successfully!";
+                return RedirectToAction("Details", "Game");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to edit the game. Please try again later or contact administrator!");
+                model.Platform = await platformService.AllPlatformsAsync();
+                model.Genre = await genreService.AllGenresAsync();
+
+                return View(model);
+            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> Details(string id)
