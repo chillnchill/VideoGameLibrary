@@ -17,6 +17,7 @@
           "VideoGameLibrary.Data": "1.0.0",
           "VideoGameLibrary.Data.Models": "1.0.0",
           "VideoGameLibrary.Services.Data": "1.0.0",
+          "VideoGameLibrary.Services.Data.Models": "1.0.0",
           "VideoGameLibrary.Web.Infrastructure": "1.0.0",
           "VideoGameLibrary.Web.ViewModels": "1.0.0"
         },
@@ -622,10 +623,19 @@
           "VideoGameLibrary.Common": "1.0.0",
           "VideoGameLibrary.Data": "1.0.0",
           "VideoGameLibrary.Data.Models": "1.0.0",
+          "VideoGameLibrary.Services.Data.Models": "1.0.0",
           "VideoGameLibrary.Web.ViewModels": "1.0.0"
         },
         "runtime": {
           "VideoGameLibrary.Services.Data.dll": {}
+        }
+      },
+      "VideoGameLibrary.Services.Data.Models/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Services.Data.Models.dll": {}
         }
       },
       "VideoGameLibrary.Web.Infrastructure/1.0.0": {
@@ -1054,6 +1064,11 @@
       "sha512": ""
     },
     "VideoGameLibrary.Services.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Services.Data.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

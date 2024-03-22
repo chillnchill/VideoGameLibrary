@@ -1,12 +1,20 @@
-﻿.card-img-top {
+﻿h2{
+    color: antiquewhite
+}
+
+label {
+    color: antiquewhite
+}
+.card-img-top {
     height: 500px;
     object-fit: fill;
+    width: 100%;
+
 }
 
 .card-body {
-    padding: 10px; 
-}
-
-.card:hover {
+    padding: 10px;
+    text-align: center;
+    background-color: gray;
     cursor: pointer;
 }

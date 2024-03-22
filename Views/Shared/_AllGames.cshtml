@@ -1,0 +1,18 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Game
+@model AllGamesViewModel
+
+<div class="col">
+    <a asp-controller="Game" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none text-dark">
+        <div class="card">
+            <img src="@Model.CoverImg" class="card-img-top" alt="@Model.Title cover image">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text"><b>Developer:</b> @Model.Developer</p>
+                <p class="card-text"><b>Publisher:</b> @Model.Publisher</p>
+                <p class="card-text"><b>Genre:</b> @Model.Genre</p>
+                <p class="card-text"><b>Price:</b> $@Model.Price</p>
+                <p class="card-text"><b>Release Date:</b> @Model.ReleaseDate</p>
+            </div>
+        </div>
+    </a>
+</div>

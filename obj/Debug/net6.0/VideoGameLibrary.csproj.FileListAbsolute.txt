@@ -93,3 +93,5 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\R
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.Models.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.Models.pdb
