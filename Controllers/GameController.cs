@@ -93,9 +93,9 @@ namespace VideoGameLibrary.Controllers
 			try
 			{
 				string userId = User.GetId()!;
-				await gameService.AddGameAsync(model, userId);
+				string gameId = await gameService.AddGameAsync(model, userId);
 				TempData[SuccessMessage] = "Game added successfully!";
-				return RedirectToAction("All", "Game");
+				return RedirectToAction("Details", "Game", new {id = gameId});
 			}
 			catch (Exception)
 			{
@@ -186,8 +186,7 @@ namespace VideoGameLibrary.Controllers
 			try
 			{
 				await gameService.EditGameByIdAsync(model, id);
-				TempData[SuccessMessage] = "Game edited successfully!";
-				return RedirectToAction("Details", "Game");
+				
 			}
 			catch (Exception)
 			{
@@ -198,6 +197,9 @@ namespace VideoGameLibrary.Controllers
 
 				return View(model);
 			}
+
+			TempData[SuccessMessage] = "Game edited successfully!";
+			return RedirectToAction("Details", "Game", new { id });
 		}
 
 		[HttpGet]

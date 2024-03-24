@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="row mb-5">
+    <div class="row mb-1">
         @foreach (var game in Model.Games)
         {
             <div class="col-md-4 mb-3">
@@ -84,7 +84,7 @@
         Model.GamesPerPage);
 }
 
-<div class="row mb-5">
+<div class="row mt-1">
     <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
            asp-controller="Game"
