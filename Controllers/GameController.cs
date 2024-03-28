@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Services.Data.Models.Game;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
@@ -9,9 +10,9 @@ using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game;
 
 namespace VideoGameLibrary.Controllers
 {
-    using static VideoGameLibrary.Common.NotificationMessagesConstants;
+	using static VideoGameLibrary.Common.NotificationMessagesConstants;
 
-    [Authorize]
+	[Authorize]
 	public class GameController : Controller
 	{
 		private readonly IGameService gameService;
@@ -25,8 +26,28 @@ namespace VideoGameLibrary.Controllers
 		}
 
 		[HttpGet]
+		public async Task<IActionResult> Collection()
+		{
+			string userId = User.GetId()!;
+
+			try
+			{				
+				IEnumerable<AllGamesViewModel> games = await gameService.AllAddedGamesByUserAsync(userId);
+
+				return View(games);
+			}
+			catch (Exception)
+			{
+				ModelState.AddModelError(string.Empty,
+					"Unexpected error occurred while trying to fetch game collection. Please try again later or contact administrator!");
+
+				return RedirectToAction("All", "Game");
+			}
+		}
+
+		[HttpGet]
 		[AllowAnonymous]
-		public async Task<IActionResult> All([FromQuery]AllGamesQueryModel queryModel)
+		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
 			AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
 
@@ -95,7 +116,7 @@ namespace VideoGameLibrary.Controllers
 				string userId = User.GetId()!;
 				string gameId = await gameService.AddGameAsync(model, userId);
 				TempData[SuccessMessage] = "Game added successfully!";
-				return RedirectToAction("Details", "Game", new {id = gameId});
+				return RedirectToAction("Details", "Game", new { id = gameId });
 			}
 			catch (Exception)
 			{
@@ -186,7 +207,7 @@ namespace VideoGameLibrary.Controllers
 			try
 			{
 				await gameService.EditGameByIdAsync(model, id);
-				
+
 			}
 			catch (Exception)
 			{
@@ -278,7 +299,7 @@ namespace VideoGameLibrary.Controllers
 			if (!User.Identity.IsAuthenticated)
 			{
 				TempData[ErrorMessage] = "You need to be logged in to view game details!";
-				return RedirectToAction("All", "Game");	
+				return RedirectToAction("All", "Game");
 			}
 
 			// Continue with the rest of your logic
@@ -315,7 +336,7 @@ namespace VideoGameLibrary.Controllers
 			TempData[ErrorMessage] =
 				"Unexpected error occurred! Please try again later or contact administrator";
 
-			return RedirectToAction("All", "Game");	
+			return RedirectToAction("All", "Game");
 		}
 	}
 }

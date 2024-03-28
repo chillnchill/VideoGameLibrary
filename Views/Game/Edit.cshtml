@@ -1,4 +1,5 @@
 ﻿@using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
 
 @model GameFormModel
 
@@ -55,7 +56,7 @@
         <span asp-validation-for="@Model.Price" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         <label asp-for="PlatformId">Platform</label>
         <select asp-for="PlatformId" class="form-control">
             @foreach (var category in Model.Platform)
@@ -66,7 +67,7 @@
         <span asp-validation-for="PlatformId" class="small text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         <label asp-for="GenreId">Genre</label>
         <select asp-for="GenreId" class="form-control">
             @foreach (var category in Model.Genre)

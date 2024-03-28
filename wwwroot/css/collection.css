@@ -1,0 +1,24 @@
+﻿h1 {
+    text-align: center;
+}
+
+.game-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+    .game-box img {
+        max-width: 150px;
+        margin-right: 10px;
+    }
+
+.game-details {
+    flex-grow: 1;
+}
+
+    .game-details p {
+        margin: 5px 0;
+    }
