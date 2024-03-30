@@ -57,7 +57,6 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\V
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.AssemblyInfoInputs.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.AssemblyInfo.cs
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.csproj.CoreCompileInputs.cache
-C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.RazorAssemblyInfo.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.RazorAssemblyInfo.cs
@@ -95,3 +94,5 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\S
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.Models.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\VideoGameLibrary.Services.Data.Models.pdb
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.MvcApplicationPartsAssemblyInfo.cs

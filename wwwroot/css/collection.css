@@ -2,12 +2,18 @@
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .game-box {
+    text-decoration: none;
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     display: flex;
+    cursor: pointer;
 }
 
     .game-box img {

@@ -18,11 +18,14 @@ namespace VideoGameLibrary.Controllers
 		private readonly IGameService gameService;
 		private readonly IGenreService genreService;
 		private readonly IPlatformService platformService;
-		public GameController(IGameService gameService, IGenreService genreService, IPlatformService platformService)
+		private readonly IModeratorService moderatorService;
+		public GameController(IGameService gameService, IGenreService genreService, IPlatformService platformService,
+			IModeratorService moderatorService)
 		{
 			this.gameService = gameService;
 			this.genreService = genreService;
 			this.platformService = platformService;
+			this.moderatorService = moderatorService;
 		}
 
 		[HttpGet]
@@ -142,14 +145,14 @@ namespace VideoGameLibrary.Controllers
 			}
 
 			string userId = User.GetId()!;
-			bool isUserOwner = await gameService
-			   .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(userId);
 
-			if (!isUserOwner)
+			if (!isUserOwner && !isUserModerator)
 			{
-				TempData[ErrorMessage] = "You must be the game owner if you want to edit!";
+				TempData[ErrorMessage] = "You must be the game owner or a moderator if you want to edit!";
 
-				return RedirectToAction("Details", "Game");
+				return RedirectToAction("Details", "Game", new { id });
 			}
 
 			try
@@ -194,14 +197,14 @@ namespace VideoGameLibrary.Controllers
 			}
 
 			string userId = User.GetId()!;
-			bool isUserOwner = await gameService
-			   .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(userId);
 
-			if (!isUserOwner)
+			if (!isUserOwner && !isUserModerator)
 			{
-				TempData[ErrorMessage] = "You must be the game owner if you want to edit!";
+				TempData[ErrorMessage] = "You must be the game owner or a moderator if you want to edit!";
 
-				return RedirectToAction("All", "Game");
+				return RedirectToAction("Details", "Game", new { id });
 			}
 
 			try
@@ -235,14 +238,14 @@ namespace VideoGameLibrary.Controllers
 			}
 
 			string userId = User.GetId()!;
-			bool isUserOwner = await gameService
-			   .IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, userId!);
+			bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(userId);
 
-			if (!isUserOwner)
+			if (!isUserOwner && !isUserModerator)
 			{
-				TempData[ErrorMessage] = "You must be the game owner!";
+				TempData[ErrorMessage] = "You must be the game owner or a moderator!";
 
-				return RedirectToAction("All", "Game");
+				return RedirectToAction("All", "Game", new { id });
 			}
 
 			try
@@ -271,10 +274,11 @@ namespace VideoGameLibrary.Controllers
 			}
 
 			string userId = User.GetId()!;
-			bool isUserOwner = await gameService
-			   .IsOwnerWithIdCreatorOfGameWithId(gameId, userId!);
+			bool isUserOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(gameId, userId!);
+			bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(userId);
 
-			if (!isUserOwner)
+
+			if (!isUserOwner && !isUserModerator)
 			{
 				TempData[ErrorMessage] = "You must be the game owner!";
 
@@ -329,7 +333,6 @@ namespace VideoGameLibrary.Controllers
 				return GeneralError();
 			}
 		}
-
 
 		private IActionResult GeneralError()
 		{

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using VideoGameLibrary.Data;
@@ -32,7 +33,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 .AddEntityFrameworkStores<VideoGameLibraryDbContext>();
 
 builder.Services.AddApplicationServices(typeof(IGameService));
-builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 
 
@@ -40,7 +40,8 @@ builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-    });
+		options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+	});
 
 WebApplication app = builder.Build();
 

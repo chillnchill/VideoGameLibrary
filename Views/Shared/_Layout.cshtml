@@ -1,73 +1,92 @@
 ﻿@using static VideoGameLibrary.Common.GeneralApplicationConstants;
+@using VideoGameLibrary.Services.Data.Interfaces
+@using VideoGameLibrary.Web.Infrastructure.Extensions;
+
+@inject IModeratorService ModeratorService
+@{
+	bool isUserModerator = await ModeratorService.ModeratorExistsByUserIdAsync(User.GetId());
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Video Game Library</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/VideoGameLibrary.styles.css" asp-append-version="true" />
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Video Game Library</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/VideoGameLibrary.styles.css" asp-append-version="true" />
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>       
-        @if (ViewData["SkipNavigation"]?.ToString() != "true")
-        {
-            <partial name="_NotificationsPartial" />
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Game Library</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Add">Add a Game</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="All">View all Games</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Collection">View Collection</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="Become">Become a moderator</a>
-                            </li>
-                        </ul>
-                        @* this loads the login/reg buttons *@
-                        <partial name="_LoginPartial" />
-                    </div>
-                </div>
-            </nav>
-        }
-    </header>
+	<header>
+		@if (ViewData["SkipNavigation"]?.ToString() != "true")
+		{
+			<partial name="_NotificationsPartial" />
+			<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+				<div class="container-fluid">
+					<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Game Library</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+						<ul class="navbar-nav flex-grow-1">
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="All">Browse all Games</a>
+							</li>
+							@if (User.Identity?.IsAuthenticated ?? false)
+							{
+								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Add">Add a Game</a>
+								</li>
 
-    <div class="container" >
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Collection">View Collection</a>
+								</li>
+								@if (!isUserModerator)
+								{
+									<li class="nav-item">
+										<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="Become">Become a moderator</a>
+									</li>
+								}
+								else
+								{
+									<li class="nav-item">
+										<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="OptOut">Opt out</a>
+									</li>
+								}
+							}
 
-    <footer class="footer text-muted">
-        <div class="footer-content d-flex justify-content-start">
-            &copy; GameLibrary @ReleaseYear
-            @if (DateTime.UtcNow.Year != ReleaseYear)
-            {
-                @Html.Raw($" - {DateTime.UtcNow.Year}")
-            }
-        </div>
-    </footer>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+						</ul>
+						@* this loads the login/reg buttons *@
+						<partial name="_LoginPartial" />
+					</div>
+				</div>
+			</nav>
+		}
+	</header>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="footer text-muted">
+		<div class="footer-content d-flex justify-content-start">
+			&copy; GameLibrary @ReleaseYear
+			@if (DateTime.UtcNow.Year != ReleaseYear)
+			{
+				@Html.Raw($" - {DateTime.UtcNow.Year}")
+			}
+		</div>
+	</footer>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

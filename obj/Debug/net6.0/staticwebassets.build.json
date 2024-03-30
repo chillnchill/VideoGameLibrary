@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "U/7rt0iHc8jGJpD+Kzctvmr6WxdAW+k6b6wfSjASJe0=",
+  "Hash": "sE/qYdTWFJTzM5WcHertOXp7fJIm2vra6zeY8he+lNI=",
   "Source": "VideoGameLibrary",
   "BasePath": "_content/VideoGameLibrary",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\VideoGameLibrary.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\collection.css",
+      "SourceId": "VideoGameLibrary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\",
+      "BasePath": "_content/VideoGameLibrary",
+      "RelativePath": "css/collection.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\collection.css"
     },
     {
       "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\css\\dark.css",

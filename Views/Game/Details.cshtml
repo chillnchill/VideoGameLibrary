@@ -1,10 +1,19 @@
-﻿@using VideoGameLibrary.Web.ViewModels.Game
+﻿@using VideoGameLibrary.Services.Data.Interfaces
+@using VideoGameLibrary.Web.Infrastructure.Extensions
+@using VideoGameLibrary.Web.ViewModels.Game
 @model GameDetailsViewModel
 <link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+@inject IModeratorService ModeratorService
+@{
+	bool isUserModerator = await ModeratorService.ModeratorExistsByUserIdAsync(User.GetId());
+}
 
 @{
 	ViewData["Title"] = "Game Details";
 }
+
+
 
 <div class="row">
 	<div class="col-md-4">
@@ -37,7 +46,7 @@
 			<li class="list-group-item">Genre: @Model.Genre</li>
 			<li class="list-group-item">Platform: @Model.Platform</li>
 		</ul>
-		@if (Model.IsOwner)
+		@if (Model.IsOwner || isUserModerator)
 		{
 			<a href="@Url.Action("Edit", "Game", new { id = Model.Id })" class="btn btn-primary mt-3">Edit</a>
 			<a href="@Url.Action("Delete", "Game", new { id = Model.Id })" class="btn btn-danger mt-3">Delete</a>
