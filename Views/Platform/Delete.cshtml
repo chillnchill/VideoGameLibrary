@@ -1,0 +1,14 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Platform
+@model PlatformDeleteViewModel
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+
+<h2>Delete Platform</h2>
+
+<h3>Are you sure you want to delete the platform "@Model.Name"?</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="PlatformCrud" class="btn btn-secondary">Cancel</a>
+</form>

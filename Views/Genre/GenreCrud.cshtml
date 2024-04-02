@@ -1,0 +1,33 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Genre
+@model NewGenreViewModel
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+
+<h2 class="mb-4">Genres</h2>
+<form asp-action="Create" method="post" class="create-genre-form mb-4" style="max-width: 400px;">
+    <div class="mb-3">
+        <label asp-for="NewGenreName" class="form-label">Add new Genre:</label>
+        <input asp-for="NewGenreName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+<hr />
+
+@foreach (var genreModel in Model.ExistingGenres)
+{
+    <div class="genre">
+        <a href="@Url.Action("Update", "Genre", new { id = genreModel.Id })" class="fs-5 genre-name" data-genre-id="@genreModel.Id" style="margin-right: 10px;">@genreModel.Name</a>
+        <input type="text" class="edit-genre-name d-none" data-genre-id="@genreModel.Id" />
+        <a href="@Url.Action("Delete", "Genre", new { id = genreModel.Id })" class="btn-delete" style="color: red"><i class="fas fa-times"></i></a>
+    </div>
+    <hr />
+}
+
+
+@* @if (User.IsInRole("Admin"))
+{ *@
+@* }
+else
+{
+    <p>You are not authorized to manage platforms.</p>
+} *@

@@ -31,11 +31,16 @@
 					Rating:
 					@{
 						int numberOfFullStars = (int)Model.NumberOfStars.Value;
-						int numberOfEmptyStars = 5 - numberOfFullStars;
+						bool hasHalfStar = Model.NumberOfStars % 1 != 0; // Check if there's a half star
+						int numberOfEmptyStars = 5 - numberOfFullStars - (hasHalfStar ? 1 : 0); // Adjust empty stars count
 					}
 					@for (int i = 0; i < numberOfFullStars; i++)
 					{
 						<span class="fa fa-star checked"></span>
+					}
+					@if (hasHalfStar)
+					{
+						<span class="fa fa-star-half checked"></span>
 					}
 					@for (int i = 0; i < numberOfEmptyStars; i++)
 					{

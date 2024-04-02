@@ -5,16 +5,21 @@
 label {
     color: antiquewhite
 }
+
+.card {
+    background-color: #041b2e;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 .card-img-top {
     height: 500px;
     object-fit: fill;
     width: 100%;
-
 }
 
 .card-body {
     padding: 10px;
-    text-align: center;
-    background-color: gray;
+    text-align: center;   
     cursor: pointer;
 }

@@ -1,7 +1,3 @@
-﻿h1, h2, p, tr, td{
-    color: antiquewhite;
-}
-
-.mb-3{
+﻿h1, h2, h3, p, tr, td, .mb-3, .form-group, .names, .platform {
     color: antiquewhite;
 }

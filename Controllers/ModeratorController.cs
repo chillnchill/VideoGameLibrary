@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
 using VideoGameLibrary.Web.ViewModels.Moderator;
@@ -11,6 +8,9 @@ using VideoGameLibrary.Web.ViewModels.Moderator;
 namespace VideoGameLibrary.Controllers
 {
 	using static VideoGameLibrary.Common.NotificationMessagesConstants;
+
+
+	[Authorize]
 	public class ModeratorController : Controller
 	{
 		private readonly IModeratorService moderatorService;

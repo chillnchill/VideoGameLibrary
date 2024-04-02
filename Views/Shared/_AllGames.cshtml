@@ -2,10 +2,10 @@
 @model AllGamesViewModel
 
 <div class="col">
-    <a asp-controller="Game" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none text-dark">
+    <a asp-controller="Game" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none">
         <div class="card">
             <img src="@Model.CoverImg" class="card-img-top" alt="@Model.Title cover image">
-            <div class="card-body">
+            <div class="card-body mb-3">
                 <h5 class="card-title">@Model.Title</h5>
                 <p class="card-text"><b>Developer:</b> @Model.Developer</p>
                 <p class="card-text"><b>Publisher:</b> @Model.Publisher</p>

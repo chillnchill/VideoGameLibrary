@@ -1,0 +1,32 @@
+﻿@using VideoGameLibrary.Web.ViewModels.Platform
+@model NewPlatformViewModel
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+
+<h2 class="mb-4">Platforms</h2>
+<form asp-action="Create" method="post" class="create-platform-form mb-4" style="max-width: 400px;">
+    <div class="mb-3">
+        <label asp-for="NewPlatformName" class="form-label">Add new Platform:</label>
+        <input asp-for="NewPlatformName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+<hr />
+
+@foreach (var platformModel in Model.ExistingPlatforms)
+{
+    <div class="platform">
+        <a href="@Url.Action("Update", "Platform", new { id = platformModel.Id })" class="fs-5 platform-name" data-platform-id="@platformModel.Id" style="margin-right: 10px;">@platformModel.Name</a>
+        <input type="text" class="edit-platform-name d-none" data-platform-id="@platformModel.Id" />
+        <a href="@Url.Action("Delete", "Platform", new { id = platformModel.Id })" class="btn-delete" style="color: red"><i class="fas fa-times"></i></a>
+    </div>
+    <hr />
+}
+
+@* @if (User.IsInRole("Admin"))
+{ *@
+@* }
+else
+{
+    <p>You are not authorized to manage platforms.</p>
+} *@
