@@ -121,7 +121,15 @@ namespace VideoGameLibrary.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var platform = await platformService.FetchPlatformByIdAsync(id);
+			bool platformExists = await platformService.ExistsByIdAsync(id);
+
+			if (!platformExists)
+			{
+				return NotFound();
+			}
+
+
+			var platform = await platformService.FetchPlatformByIdAsync(id);
 
             PlatformDeleteViewModel model = new PlatformDeleteViewModel()
             {
@@ -134,18 +142,25 @@ namespace VideoGameLibrary.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id, PlatformDeleteViewModel model)
+        public async Task<IActionResult> Delete(PlatformDeleteViewModel model)
         {
             string user = User.GetId()!;
             bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(user);
 
-            if (!isUserModerator)
+			bool platformExists = await platformService.ExistsByIdAsync(model.Id);
+
+			if (!platformExists)
+			{
+				return NotFound();
+			}
+
+			if (!isUserModerator)
             {
                 TempData[ErrorMessage] = "You must be a moderator if you want to edit a platform!";
                 return RedirectToAction("All", "Game");
             }
 
-            bool existsById = await platformService.ExistsByIdAsync(id);
+            bool existsById = await platformService.ExistsByIdAsync(model.Id);
             if (!existsById)
             {
                 TempData[ErrorMessage] = "Platform doesn't exist!";
@@ -154,7 +169,7 @@ namespace VideoGameLibrary.Controllers
 
             try
             {
-                await platformService.DeletePlatformByIdAsync(id);
+                await platformService.DeletePlatformByIdAsync(model.Id);
                 TempData[WarningMessage] = "Platform deleted successfully!";
                 return RedirectToAction("PlatformCrud", "Platform");
             }
@@ -170,10 +185,10 @@ namespace VideoGameLibrary.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = ModelState
-                    .Where(x => x.Value.Errors.Count > 0)
-                    .Select(x => new { x.Key, x.Value.Errors })
-                    .ToArray();
+                //var errors = ModelState
+                //    .Where(x => x.Value.Errors.Count > 0)
+                //    .Select(x => new { x.Key, x.Value.Errors })
+                //    .ToArray();
 
                 return false;
             }

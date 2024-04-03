@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.Services.Data;
 using VideoGameLibrary.Services.Data.Interfaces;
@@ -147,9 +148,16 @@ namespace VideoGameLibrary.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Genre genre = await genreService.FetchGenreByIdAsync(id);
+            bool genreExists = await genreService.ExistsByIdAsync(id);
+            
+			if (!genreExists)
+			{
+				return NotFound();
+			}
+			Genre genre = await genreService.FetchGenreByIdAsync(id);
 
-            GenreDeleteViewModel model = new GenreDeleteViewModel()
+
+			GenreDeleteViewModel model = new GenreDeleteViewModel()
             {
                 Id = genre.Id,
                 Name = genre.Name,
@@ -160,18 +168,25 @@ namespace VideoGameLibrary.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id, GenreDeleteViewModel model)
+        public async Task<IActionResult> Delete(GenreDeleteViewModel model)
         {
             string user = User.GetId()!;
             bool isUserModerator = await moderatorService.ModeratorExistsByUserIdAsync(user);
 
-            if (!isUserModerator)
+			bool genreExists = await genreService.ExistsByIdAsync(model.Id);
+
+			if (!genreExists)
+			{
+				return NotFound();
+			}
+
+			if (!isUserModerator)
             {
                 TempData[ErrorMessage] = "You must be a moderator if you want to edit a platform!";
                 return RedirectToAction("All", "Game");
             }
 
-            bool existsById = await genreService.ExistsByIdAsync(id);
+            bool existsById = await genreService.ExistsByIdAsync(model.Id);
             if (!existsById)
             {
                 TempData[ErrorMessage] = "Genre doesn't exist!";
@@ -180,7 +195,7 @@ namespace VideoGameLibrary.Controllers
 
             try
             {
-                await genreService.DeleteGenreByIdAsync(id);
+                await genreService.DeleteGenreByIdAsync(model.Id);
                 TempData[WarningMessage] = "Genre deleted successfully!";
                 return RedirectToAction("GenreCrud", "Genre");
             }
