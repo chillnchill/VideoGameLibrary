@@ -1,7 +1,7 @@
 ﻿@model VideoGameLibrary.Web.ViewModels.Review.NewReviewViewModel
 <link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
 
-<h2>Add a New Review</h2>
+<h2 class="text-center">Add a New Review</h2>
 
 <form asp-controller="Review" asp-action="Add" method="post">
     <input type="hidden" asp-for="GameId" value="@Model.GameId" />
@@ -9,20 +9,20 @@
 
     <div class="form-group">
         <label asp-for="Content">Content</label>
-        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+        <textarea asp-for="Content" class="form-control" rows="4"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-		<label asp-for="@Model.Rating class=" form-label-add-edit">Number of Stars</label>
-        <select asp-for="@Model.Rating" class="form-select" aria-required="true">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
+        <label asp-for="@Model.Rating class=" form-label-add-edit">Number of Stars</label>
+        <select asp-for="@Model.Rating" class="form-select" aria-required="true" style="max-width: 150px;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
         <span asp-validation-for="@Model.Rating" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>

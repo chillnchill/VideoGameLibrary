@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using VideoGameLibrary.Data.Models;
-using VideoGameLibrary.Services.Data;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
-using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game;
 using VideoGameLibrary.Web.ViewModels.Review;
 
 namespace VideoGameLibrary.Controllers
@@ -60,7 +57,7 @@ namespace VideoGameLibrary.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Add(string id, NewReviewViewModel model)
+		public async Task<IActionResult> Add(NewReviewViewModel model)
 		{
 			string userId = User.GetId()!;
 
@@ -71,7 +68,7 @@ namespace VideoGameLibrary.Controllers
 			}
 
 			model.OwnerId = userId;
-			var gameExists = await gameService.ExistsByIdAsync(id);
+			bool gameExists = await gameService.ExistsByIdAsync(model.GameId);
 
 			if (!gameExists)
 			{
@@ -92,7 +89,7 @@ namespace VideoGameLibrary.Controllers
 			{
 				await reviewService.AddReviewAsync(model, userId);
 				TempData[SuccessMessage] = "Review added successfully!";
-				return RedirectToAction("Details", "Game", new { id });
+				return RedirectToAction("Details", "Game", new { id = model.GameId });
 			}
 			catch (Exception)
 			{
@@ -102,27 +99,84 @@ namespace VideoGameLibrary.Controllers
 			}
 		}
 
+
 		[HttpGet]
 		public async Task<IActionResult> Edit(int id)
 		{
-			bool exists = await reviewService.ReviewExistsByIdAsync(id);
+			string userId = User.GetId()!;
+			if (userId == null)
+			{
+				TempData[ErrorMessage] = "You need to be logged in to edit a game!";
+				return RedirectToAction("All", "Game");
+			}
 
-			if (!exists)
+			string gameId = await reviewService.GetGameIdByReviewIdAsync(id);
+			bool gameExists = await gameService.ExistsByIdAsync(gameId);
+			if (!gameExists)
+			{
+				TempData[ErrorMessage] = "A Game with the provided id does not exist!";
+				return RedirectToAction("All", "Game");
+			}
+
+
+			bool reviewExists = await reviewService.ReviewExistsByIdAsync(id);
+			if (!reviewExists)
 			{
 				TempData[ErrorMessage] = "A review with the provided id does not exist!";
-				return RedirectToAction("Details", "Game", new { id });
+				return RedirectToAction("Details", "Game");
 			}
 
 			try
 			{
-				NewReviewViewModel model = await reviewService.EditReviewByIdAsync(id);
-
+				NewReviewViewModel model = await reviewService.GetReviewForEditAsync(id);
+				model.OwnerId = userId;
+				model.GameId = gameId;
 				return View(model);
 			}
 			catch (Exception)
 			{
 				return GeneralError();
 			}
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit(NewReviewViewModel model)
+		{
+			string userId = User.GetId()!;
+			if (userId == null)
+			{
+				TempData[ErrorMessage] = "You need to be logged in to edit a game!";
+				return RedirectToAction("All", "Game");
+			}
+
+			bool exists = await reviewService.ReviewExistsByIdAsync(model.Id);
+			if (!exists)
+			{
+				TempData[ErrorMessage] = "A review with the provided id does not exist!";
+				return RedirectToAction("Details", "Game");
+			}
+
+			if (!ModelState.IsValid)
+			{
+				var errors = ModelState
+					.Where(x => x.Value.Errors.Count > 0)
+					.Select(x => new { x.Key, x.Value.Errors })
+					.ToArray();
+				return View(model);
+			}
+
+			try
+			{
+				await reviewService.EditReviewAsync(model, model.Id);
+				TempData[SuccessMessage] = "Review edited successfully!";
+				return RedirectToAction("Details", "Game", new { id = model.GameId });
+			}
+			catch (Exception)
+			{
+				return GeneralError();
+			}
+
 		}
 
 		private IActionResult GeneralError()
