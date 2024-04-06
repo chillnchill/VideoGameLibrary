@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
+using VideoGameLibrary.Web.ViewModels.Game;
 using VideoGameLibrary.Web.ViewModels.Review;
 
 namespace VideoGameLibrary.Controllers
@@ -118,7 +119,6 @@ namespace VideoGameLibrary.Controllers
 				return RedirectToAction("All", "Game");
 			}
 
-
 			bool reviewExists = await reviewService.ReviewExistsByIdAsync(id);
 			if (!reviewExists)
 			{
@@ -177,6 +177,44 @@ namespace VideoGameLibrary.Controllers
 				return GeneralError();
 			}
 
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Delete(int id)
+		{
+			string userId = User.GetId()!;
+			if (userId == null)
+			{
+				TempData[ErrorMessage] = "You need to be logged in to delete a game!";
+				return RedirectToAction("All", "Game");
+			}
+
+			string gameId = await reviewService.GetGameIdByReviewIdAsync(id);
+			bool gameExists = await gameService.ExistsByIdAsync(gameId);
+			if (!gameExists)
+			{
+				TempData[ErrorMessage] = "A Game with the provided id does not exist!";
+				return RedirectToAction("All", "Game");
+			}
+
+			bool reviewExists = await reviewService.ReviewExistsByIdAsync(id);
+			if (!reviewExists)
+			{
+				TempData[ErrorMessage] = "A review with the provided id does not exist!";
+				return RedirectToAction("Details", "Game");
+			}
+
+			try
+			{
+				await reviewService.DeleteReviewByIdAsync(id);
+				TempData[WarningMessage] = "The review was deleted successfully!";
+				return RedirectToAction("Details", "Game", new { id = gameId });
+			}
+			catch (Exception)
+			{
+				return GeneralError();
+			}
 		}
 
 		private IActionResult GeneralError()
