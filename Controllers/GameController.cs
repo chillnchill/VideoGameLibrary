@@ -19,16 +19,20 @@ namespace VideoGameLibrary.Controllers
 		private readonly IGenreService genreService;
 		private readonly IPlatformService platformService;
 		private readonly IModeratorService moderatorService;
-		public GameController(IGameService gameService, IGenreService genreService, IPlatformService platformService,
-			IModeratorService moderatorService)
+		private readonly IReviewService reviewService;
+		private readonly IUserService userService;
+        public GameController(IGameService gameService, IGenreService genreService, IPlatformService platformService,
+			IModeratorService moderatorService, IReviewService reviewService, IUserService userService)
 		{
 			this.gameService = gameService;
 			this.genreService = genreService;
 			this.platformService = platformService;
 			this.moderatorService = moderatorService;
-		}
+            this.reviewService = reviewService;
+			this.userService = userService;
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public async Task<IActionResult> Collection()
 		{
 			string userId = User.GetId()!;
@@ -176,11 +180,6 @@ namespace VideoGameLibrary.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				var errors = ModelState
-					.Where(x => x.Value.Errors.Count > 0)
-					.Select(x => new { x.Key, x.Value.Errors })
-					.ToArray();
-
 				model.Platform = await platformService.AllPlatformsAsync();
 				model.Genre = await genreService.AllGenresAsync();
 
@@ -314,13 +313,15 @@ namespace VideoGameLibrary.Controllers
 				return RedirectToAction("All", "Game");
 			}
 
-			try
+            try
 			{
 				GameDetailsViewModel viewModel = await gameService.GetGameDetailsByIdAsync(id);
-
-				string user = User.GetId()!;
-				var isOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, user);
-
+                var reviews = await reviewService.AllReviewsPerGameAsync(id);
+				viewModel.Reviews = reviews;
+                string user = User.GetId()!;
+				bool isOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, user);
+				
+				
 				if (isOwner)
 				{
 					viewModel.IsOwner = true;
@@ -333,6 +334,7 @@ namespace VideoGameLibrary.Controllers
 				return GeneralError();
 			}
 		}
+
 
 		private IActionResult GeneralError()
 		{

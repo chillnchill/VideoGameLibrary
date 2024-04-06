@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using VideoGameLibrary.Data.Models;
-using VideoGameLibrary.Services.Data;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
 using VideoGameLibrary.Web.ViewModels.Genre;
-using VideoGameLibrary.Web.ViewModels.Platform;
 
 namespace VideoGameLibrary.Controllers
 {

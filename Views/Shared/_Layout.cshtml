@@ -43,8 +43,14 @@
 									<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Add">Add a Game</a>
 								</li>
 
-								<li class="nav-item">
-									<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Collection">View Collection</a>
+								<li class="nav-item dropdown" id="collectionsDropdown">
+									<a class="nav-link dropdown-toggle text-dark" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+										Collections
+									</a>
+									<div class="dropdown-menu" aria-labelledby="collectionsDropdown">
+										<a class="dropdown-item" href="@Url.Action("Collection", "Game")">Added games</a>
+										<a class="dropdown-item" href="#">Liked games</a>
+									</div>
 								</li>
 								@if (!isUserModerator)
 								{
