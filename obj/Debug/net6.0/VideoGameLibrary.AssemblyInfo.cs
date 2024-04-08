@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VideoGameLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1396479a25d31e4793f698f18f216348bfd63977")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94242a43dac4c61f815eb30e1c199cd1837bf8f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("VideoGameLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VideoGameLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

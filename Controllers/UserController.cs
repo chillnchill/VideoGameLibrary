@@ -35,8 +35,8 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpPost]
-        [ValidateRecaptcha(Action = nameof(Register),
-            ValidationFailedAction = ValidationFailedAction.ContinueRequest)]
+        //[ValidateRecaptcha(Action = nameof(Register),
+        //    ValidationFailedAction = ValidationFailedAction.ContinueRequest)]
         public async Task<IActionResult> Register(RegisterFormModel model)
         {
             if (!ModelState.IsValid)
@@ -67,7 +67,7 @@ namespace VideoGameLibrary.Controllers
             }
 
             await signInManager.SignInAsync(user, false);
-            //memoryCache.Remove(UsersCacheKey);
+           // memoryCache.Remove(UsersCacheKey);
 
             return RedirectToAction("Index", "Home");
         }
@@ -75,6 +75,8 @@ namespace VideoGameLibrary.Controllers
         [HttpGet]
         public async Task<IActionResult> Login(string? returnUrl = null)
         {
+            //preventing a double login attempt
+            //clears cookies from previous log
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             LoginFormModel model = new LoginFormModel()

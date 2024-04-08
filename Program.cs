@@ -6,6 +6,7 @@ using VideoGameLibrary.Data;
 using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.ModelBinders;
 using VideoGameLibrary.Services.Data.Interfaces;
+using static VideoGameLibrary.Common.GeneralApplicationConstants;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -30,18 +31,24 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.Password.RequiredLength =
         builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 })
+.AddRoles<IdentityRole<Guid>>()    
 .AddEntityFrameworkStores<VideoGameLibraryDbContext>();
 
 builder.Services.AddApplicationServices(typeof(IGameService));
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 
+builder.Services.ConfigureApplicationCookie(cfg =>
+{
+    cfg.LoginPath = "/User/Login";
+    cfg.AccessDeniedPath = "/Home/Error/401";
+});
 
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-		options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-	});
+        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+    });
 
 WebApplication app = builder.Build();
 
@@ -69,6 +76,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+if (app.Environment.IsDevelopment())
+{
+    app.SeedAdministrator(DevelopmentAdminEmail);
+}
 
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
