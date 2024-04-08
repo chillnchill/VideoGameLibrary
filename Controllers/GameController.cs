@@ -279,7 +279,7 @@ namespace VideoGameLibrary.Controllers
 
 			if (!isUserOwner && !isUserModerator)
 			{
-				TempData[ErrorMessage] = "You must be the game owner!";
+				TempData[ErrorMessage] = "You must be the game owner or a moderator to do that!";
 
 				return RedirectToAction("All", "Game");
 			}
@@ -320,14 +320,45 @@ namespace VideoGameLibrary.Controllers
 				viewModel.Reviews = reviews;
                 string user = User.GetId()!;
 				bool isOwner = await gameService.IsOwnerWithIdCreatorOfGameWithId(id, user);
-				
-				
+								
 				if (isOwner)
 				{
 					viewModel.IsOwner = true;
 				}
 
 				return View(viewModel);
+			}
+			catch (Exception)
+			{
+				return GeneralError();
+			}
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Like(string gameId)
+		{
+			bool gameExists = await gameService.ExistsByIdAsync(gameId);
+
+			if (!gameExists)
+			{
+				TempData[ErrorMessage] = "Game with the provided id does not exist!";
+				return RedirectToAction("All", "Game");
+			}
+
+			string userId = User.GetId()!;
+
+			if (userId == null)
+			{
+				TempData[ErrorMessage] = "You must be logged in to Like a game!";
+				return RedirectToAction("All", "Game");
+			}
+
+			try
+			{
+				await userService.AddLikedGameAsync(gameId, userId);
+				TempData[SuccessMessage] = "Game added to your liked list!";
+				return RedirectToAction("All", "Game");
 			}
 			catch (Exception)
 			{

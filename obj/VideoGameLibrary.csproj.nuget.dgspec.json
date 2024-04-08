@@ -517,6 +517,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Griesoft.AspNetCore.ReCaptcha": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Microsoft.AspNet.Identity.Core": {
               "target": "Package",
               "version": "[2.2.4, )"

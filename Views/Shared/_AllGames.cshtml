@@ -1,18 +1,29 @@
 ﻿@using VideoGameLibrary.Web.ViewModels.Game
 @model AllGamesViewModel
+<script src="~/js/like-toggle.js"></script>
+
+
 
 <div class="col">
-    <a asp-controller="Game" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none">
-        <div class="card">
-            <img src="@Model.CoverImg" class="card-img-top" alt="@Model.Title cover image">
-            <div class="card-body mb-3">
-                <h5 class="card-title">@Model.Title</h5>
-                <p class="card-text"><b>Developer:</b> @Model.Developer</p>
-                <p class="card-text"><b>Publisher:</b> @Model.Publisher</p>
-                <p class="card-text"><b>Genre:</b> @Model.Genre</p>
-                <p class="card-text"><b>Price:</b> $@Model.Price</p>
-                <p class="card-text"><b>Release Date:</b> @Model.ReleaseDate</p>
-            </div>
-        </div>
-    </a>
+	<a asp-controller="Game" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none">
+		<div class="card">
+			<img src="@Model.CoverImg" class="card-img-top" alt="@Model.Title cover image">
+			<div class="card-body mb-3">
+				<h5 class="card-title">@Model.Title</h5>
+				<p class="card-text"><b>Developer:</b> @Model.Developer</p>
+				<p class="card-text"><b>Publisher:</b> @Model.Publisher</p>
+				<p class="card-text"><b>Genre:</b> @Model.Genre</p>
+				<p class="card-text"><b>Price:</b> $@Model.Price</p>
+				<p class="card-text"><b>Release Date:</b> @Model.ReleaseDate</p>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<form asp-controller="Game" asp-action="Like" method="post">
+						<button type="submit" class="btn btn-primary like-button" data-game-id="@Model.Id">
+							<i id="like-icon-@Model.Id" class="heart-icon far fa-heart"></i> Like
+						</button>
+					</form>
+				}
+			</div>
+		</div>
+	</a>
 </div>

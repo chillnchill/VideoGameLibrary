@@ -96,3 +96,5 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\r
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.genruntimeconfig.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\ref\VideoGameLibrary.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\Griesoft.AspNetCore.ReCaptcha.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\Newtonsoft.Json.dll
