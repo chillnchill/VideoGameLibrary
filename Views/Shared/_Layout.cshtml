@@ -62,7 +62,11 @@
 								{
 									<li class="nav-item">
 										<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="OptOut">Opt out</a>
-									</li>
+									</li>						
+								}
+
+								@if (User.IsAdmin())
+								{
 									<li class="nav-item">
 										<a class="nav-link text-dark" asp-area="" asp-controller="Platform" asp-action="PlatformCrud">platforms</a>
 									</li>

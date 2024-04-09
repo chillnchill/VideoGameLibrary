@@ -14,10 +14,12 @@ namespace VideoGameLibrary.Controllers
 	public class ModeratorController : Controller
 	{
 		private readonly IModeratorService moderatorService;
+		private readonly IUserService userService;
 
-		public ModeratorController(IModeratorService moderatorService)
+		public ModeratorController(IModeratorService moderatorService, IUserService userService)
 		{
 			this.moderatorService = moderatorService;
+			this.userService = userService;
 		}
 
 		[HttpGet]

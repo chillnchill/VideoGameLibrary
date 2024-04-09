@@ -116,7 +116,7 @@ namespace VideoGameLibrary.Controllers
             }
             catch (Exception)
             {
-                TempData[ErrorMessage] = "Something went wrong while trying to edit genre, please try again later";
+                TempData[ErrorMessage] = "Something went wrong while trying to edit the genre, please try again later";
                 return RedirectToAction("GenreCrud", "Genre");
             }
         }
@@ -152,7 +152,7 @@ namespace VideoGameLibrary.Controllers
             }
             catch (Exception)
             {
-                TempData[ErrorMessage] = "Something went wrong while trying to edit genre, please try again later";
+                TempData[ErrorMessage] = "Something went wrong while trying to edit the genre";
                 return RedirectToAction("GenreCrud", "Genre");
             }
         }
@@ -167,8 +167,7 @@ namespace VideoGameLibrary.Controllers
                 return RedirectToAction("All", "Game");
             }
 
-            bool genreExists = await genreService.ExistsByIdAsync(id);
-            
+            bool genreExists = await genreService.ExistsByIdAsync(id);    
 			if (!genreExists)
 			{
 				return NotFound();
@@ -176,7 +175,6 @@ namespace VideoGameLibrary.Controllers
 
             //put this in try-catch
 			Genre genre = await genreService.FetchGenreByIdAsync(id);
-
 			GenreDeleteViewModel model = new GenreDeleteViewModel()
             {
                 Id = genre.Id,
@@ -195,12 +193,6 @@ namespace VideoGameLibrary.Controllers
                 TempData[ErrorMessage] = "You must be an administrator if you want to delete a genre!";
                 return RedirectToAction("All", "Game");
             }
-
-            bool genreExists = await genreService.ExistsByIdAsync(model.Id);
-			if (!genreExists)
-			{
-				return NotFound();
-			}
 
             bool existsById = await genreService.ExistsByIdAsync(model.Id);
             if (!existsById)
