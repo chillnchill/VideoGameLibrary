@@ -37,6 +37,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddApplicationServices(typeof(IGameService));
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 
+builder.Services.AddRecaptchaService();
+
 builder.Services.ConfigureApplicationCookie(cfg =>
 {
     cfg.LoginPath = "/User/Login";
