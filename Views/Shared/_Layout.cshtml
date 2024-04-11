@@ -48,8 +48,8 @@
 										Collections
 									</a>
 									<div class="dropdown-menu" aria-labelledby="collectionsDropdown">
-										<a class="dropdown-item" href="@Url.Action("Collection", "Game")">Added games</a>
-										<a class="dropdown-item" href="#">Liked games</a>
+										<a class="dropdown-item" href="@Url.Action("AddedGames", "Game")">Added games</a>
+										<a class="dropdown-item" href="@Url.Action("LikedGames", "Game")">Liked games</a>
 									</div>
 								</li>
 								@if (!isUserModerator)

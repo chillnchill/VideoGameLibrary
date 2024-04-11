@@ -29,6 +29,72 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            var user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Nickname = user.Nickname
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(ProfileViewModel model)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => new { x.Key, x.Value.Errors })
+                    .ToArray();
+                return View(model);
+            }
+
+            ApplicationUser user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Nickname = model.Nickname;
+
+            IdentityResult result = await userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(model);
+            }
+
+			TempData[SuccessMessage] = "Your Profile has been updated successfully!";
+			return RedirectToAction("Profile");
+        }
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -67,7 +133,7 @@ namespace VideoGameLibrary.Controllers
             }
 
             await signInManager.SignInAsync(user, false);
-            // memoryCache.Remove(UsersCacheKey);
+            memoryCache.Remove(UsersCacheKey);
 
             return RedirectToAction("Index", "Home");
         }
@@ -106,7 +172,7 @@ namespace VideoGameLibrary.Controllers
                 return View(model);
             }
 
-            return Redirect(model.ReturnUrl ?? "/Home/Index");
+            return Redirect(model.ReturnUrl ?? "/Game/All");
         }
     }
 }

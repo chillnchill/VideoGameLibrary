@@ -22,7 +22,7 @@
 		<p>@Model.Description</p>
 		<ul class="list-group">
 			<li class="list-group-item">Released On: @Model.ReleaseDate</li>
-			<li class="list-group-item">Price: $@Model.Price</li>
+			<li class="list-group-item">Price: @(Model.Price == 0.00m ? "Free-to-play" : "$" + Model.Price.ToString())</li>
 			@if (Model.NumberOfStars.HasValue)
 			{
 				<li class="list-group-item">

@@ -18,6 +18,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -26,12 +38,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/All.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBbGwuY3NodG1s
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/AddedGames.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBZGRlZEdhbWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/Collection.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxDb2xsZWN0aW9uLmNzaHRtbA==
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/Delete.cshtml]
@@ -44,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Game/LikedGames.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxMaWtlZEdhbWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/Genre/All.cshtml]
@@ -128,6 +144,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Views/User/Register.cshtml]

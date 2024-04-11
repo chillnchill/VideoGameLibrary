@@ -10,6 +10,7 @@ using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game;
 namespace VideoGameLibrary.Controllers
 {
     using static VideoGameLibrary.Common.NotificationMessagesConstants;
+	using static VideoGameLibrary.Common.GeneralApplicationConstants;
 
     [Authorize]
 	public class GameController : Controller
@@ -32,14 +33,13 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpGet]
-		public async Task<IActionResult> Collection()
+		public async Task<IActionResult> AddedGames()
 		{
 			string userId = User.GetId()!;
 
 			try
 			{				
 				IEnumerable<AllGamesViewModel> games = await gameService.AllAddedGamesByUserAsync(userId);
-
 				return View(games);
 			}
 			catch (Exception)
@@ -50,12 +50,35 @@ namespace VideoGameLibrary.Controllers
 				return RedirectToAction("All", "Game");
 			}
 		}
+        [HttpGet]
+        public async Task<IActionResult> LikedGames()
+        {
+            string userId = User.GetId()!;
 
-		[HttpGet]
+            try
+            {
+                IEnumerable<AllGamesViewModel> games = await gameService.AllLikedGamesAsync(userId);
+                return View(games);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to fetch game collection. Please try again later or contact administrator!");
+
+                return RedirectToAction("All", "Game");
+            }
+        }
+
+        [HttpGet]
 		[AllowAnonymous]
 		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
-			AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
+            if (this.User.IsInRole(AdminRoleName))
+            {
+                return this.RedirectToAction("All", "Game", new { Area = AdminAreaName });
+            }
+
+            AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
 
 			queryModel.Games = model.Games;
 			queryModel.TotalGames = model.TotalGamesCount;
