@@ -1,18 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-using VideoGameLibrary.Models;
-using VideoGameLibrary.Services.Data.Interfaces;
 using static VideoGameLibrary.Common.GeneralApplicationConstants;
 
 namespace VideoGameLibrary.Controllers
 {
 
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            if (this.User.IsInRole(AdminRoleName))
+            if (User.IsInRole(AdminRoleName))
             {
                 return this.RedirectToAction("Index", "Home", new { Area = AdminAreaName });
             }

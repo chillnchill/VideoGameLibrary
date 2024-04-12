@@ -12,26 +12,26 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 string connectionString =
-    builder.Configuration.GetConnectionString("DefaultConnection");
+	builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<VideoGameLibraryDbContext>(options =>
-    options.UseSqlServer(connectionString));
+	options.UseSqlServer(connectionString));
 
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount =
-        builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
-    options.Password.RequireLowercase =
-        builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
-    options.Password.RequireUppercase =
-        builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
-    options.Password.RequireNonAlphanumeric =
-        builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
-    options.Password.RequiredLength =
-        builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+	options.SignIn.RequireConfirmedAccount =
+		builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+	options.Password.RequireLowercase =
+		builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+	options.Password.RequireUppercase =
+		builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+	options.Password.RequireNonAlphanumeric =
+		builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+	options.Password.RequiredLength =
+		builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 })
-.AddRoles<IdentityRole<Guid>>()    
+.AddRoles<IdentityRole<Guid>>()
 .AddEntityFrameworkStores<VideoGameLibraryDbContext>();
 
 builder.Services.AddApplicationServices(typeof(IGameService));
@@ -41,16 +41,16 @@ builder.Services.AddRecaptchaService();
 
 builder.Services.ConfigureApplicationCookie(cfg =>
 {
-    cfg.LoginPath = "/User/Login";
-    cfg.AccessDeniedPath = "/Home/Error/401";
+	cfg.LoginPath = "/User/Login";
+	cfg.AccessDeniedPath = "/Home/Error/401";
 });
 
 builder.Services.AddControllersWithViews()
-    .AddMvcOptions(options =>
-    {
-        options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-    });
+	.AddMvcOptions(options =>
+	{
+		options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+		options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+	});
 
 WebApplication app = builder.Build();
 
@@ -58,17 +58,17 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 
-    app.UseMigrationsEndPoint();
-    //this will show us exactly what went wrong in the web page whenever it booms
-    app.UseDeveloperExceptionPage();
+	app.UseMigrationsEndPoint();
+	//this will show us exactly what went wrong in the web page whenever it booms
+	app.UseDeveloperExceptionPage();
 
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error/500");
-    //this is for the custom error pages
-    app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error/500");
+	//this is for the custom error pages
+	app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -79,21 +79,23 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.EnableOnlineUsersCheck();
+
 if (app.Environment.IsDevelopment())
 {
-    app.SeedAdministrator(DevelopmentAdminEmail);
+	app.SeedAdministrator(DevelopmentAdminEmail);
 }
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-    );
+	endpoints.MapControllerRoute(
+	  name: "areas",
+	  pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+	);
 
-    app.MapDefaultControllerRoute();
+	app.MapDefaultControllerRoute();
 
-    app.MapRazorPages();
+	app.MapRazorPages();
 });
 
 app.Run();

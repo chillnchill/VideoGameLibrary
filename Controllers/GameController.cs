@@ -73,12 +73,9 @@ namespace VideoGameLibrary.Controllers
 		[AllowAnonymous]
 		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
-            if (this.User.IsInRole(AdminRoleName))
-            {
-                return this.RedirectToAction("All", "Game", new { Area = AdminAreaName });
-            }
 
-            AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
+
+			AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
 
 			queryModel.Games = model.Games;
 			queryModel.TotalGames = model.TotalGamesCount;

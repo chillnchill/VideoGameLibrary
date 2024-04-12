@@ -52,27 +52,21 @@
 										<a class="dropdown-item" href="@Url.Action("LikedGames", "Game")">Liked games</a>
 									</div>
 								</li>
-								@if (!isUserModerator)
-								{
-									<li class="nav-item">
-										<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="Become">Become a moderator</a>
-									</li>
-								}
-								else
-								{
-									<li class="nav-item">
-										<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="OptOut">Opt out</a>
-									</li>						
-								}
 
-								@if (User.IsAdmin())
+								@if (!User.IsAdmin())
 								{
-									<li class="nav-item">
-										<a class="nav-link text-dark" asp-area="" asp-controller="Platform" asp-action="PlatformCrud">platforms</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="GenreCrud">genres</a>
-									</li>
+									@if (!isUserModerator)
+									{
+										<li class="nav-item">
+											<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="Become">Become a moderator</a>
+										</li>
+									}
+									else
+									{
+										<li class="nav-item">
+											<a class="nav-link text-dark" asp-area="" asp-controller="Moderator" asp-action="OptOut">Opt out</a>
+										</li>
+									}
 								}
 							}
 

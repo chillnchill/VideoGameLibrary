@@ -6,44 +6,18 @@ using VideoGameLibrary.Web.ViewModels.Genre;
 
 namespace VideoGameLibrary.Controllers
 {
-    using static VideoGameLibrary.Common.NotificationMessagesConstants;
-    public class GenreController : Controller
-	{
-		private readonly IGenreService genreService;
-		private readonly IModeratorService moderatorService;
+	using static VideoGameLibrary.Common.NotificationMessagesConstants;
+	public class GenreController : Controller
+    {
+        private readonly IGenreService genreService;
+        private readonly IModeratorService moderatorService;
 
-		public GenreController(IGenreService genreService, IModeratorService moderatorService)
+        public GenreController(IGenreService genreService, IModeratorService moderatorService)
         {
             this.genreService = genreService;
             this.moderatorService = moderatorService;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> All()
-        //{
-        //	var viewModel = await genreService.AllGenresAsync();
-
-        //	return View(viewModel);
-        //}
-
-        //[HttpGet]
-        //public async Task<IActionResult> Details(int id, string information)
-        //{
-        //    bool categoryExists = await categoryService.ExistsByIdAsync(id);
-        //    if (!categoryExists)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    CategoryDetailsViewModel viewModel =
-        //        await categoryService.GetDetailsByIdAsync(id);
-        //    if (viewModel.GetUrlInformation() != information)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(viewModel);
-        //}
 
         [HttpGet]
         public async Task<IActionResult> GenreCrud()
@@ -76,7 +50,7 @@ namespace VideoGameLibrary.Controllers
             {
                 return View(model);
             }
-         
+
             try
             {
                 // Add the platform using the provided model
@@ -101,7 +75,7 @@ namespace VideoGameLibrary.Controllers
                 TempData[ErrorMessage] = "You must be an administrator if you want to edit a genre!";
                 return RedirectToAction("All", "Game");
             }
-            
+
             bool existsById = await genreService.ExistsByIdAsync(id);
             if (!existsById)
             {
@@ -111,7 +85,7 @@ namespace VideoGameLibrary.Controllers
 
             try
             {
-               NewGenreViewModel model = await genreService.GetGenreForUpdateByIdAsync(id);
+                NewGenreViewModel model = await genreService.GetGenreForUpdateByIdAsync(id);
                 return View(model);
             }
             catch (Exception)
@@ -167,15 +141,15 @@ namespace VideoGameLibrary.Controllers
                 return RedirectToAction("All", "Game");
             }
 
-            bool genreExists = await genreService.ExistsByIdAsync(id);    
-			if (!genreExists)
-			{
-				return NotFound();
-			}
+            bool genreExists = await genreService.ExistsByIdAsync(id);
+            if (!genreExists)
+            {
+                return NotFound();
+            }
 
             //put this in try-catch
-			Genre genre = await genreService.FetchGenreByIdAsync(id);
-			GenreDeleteViewModel model = new GenreDeleteViewModel()
+            Genre genre = await genreService.FetchGenreByIdAsync(id);
+            GenreDeleteViewModel model = new GenreDeleteViewModel()
             {
                 Id = genre.Id,
                 Name = genre.Name,

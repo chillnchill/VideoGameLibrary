@@ -1,12 +1,12 @@
 ﻿@using VideoGameLibrary.Web.ViewModels.User
 @model ProfileViewModel
-<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
 
 @{
 	ViewData["Title"] = "Manage Profile";
 }
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+<h1 style ="color:antiquewhite">@ViewData["Title"]</h1>
 
 @if (TempData["UpdateMessage"] != null)
 {
@@ -21,29 +21,40 @@
 		@TempData["UpdateError"]
 	</div>
 }
-
-<form asp-controller="User" asp-action="Profile" method="post">
-	<div class="form-group">
-		<label asp-for="FirstName">First Name:</label>
-		<input asp-for="FirstName" class="form-control" />
-		<span asp-validation-for="FirstName" class="text-danger"></span>
+<div class="row">
+	<div class="col-md-6 mt-2">
+		<form asp-controller="User" asp-action="Profile" method="post">
+			<div class="form-floating mb-3">
+				<input asp-for="FirstName" class="form-control" autocomplete="current-password" aria-required="true"
+					   placeholder="Please enter your first name." />
+				<label asp-for="FirstName" class="form-label">First name:</label>
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="LastName" class="form-control" autocomplete="current-password" aria-required="true"
+					   placeholder="Please enter your last name." />
+				<label asp-for="LastName" class="form-label">Last name:</label>
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="Email" class="form-control" autocomplete="current-password" aria-required="true"
+					   placeholder="Your email address" disabled />
+				<label asp-for="Email">Email:</label>
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="Nickname" class="form-control" autocomplete="current-password" aria-required="true"
+					   placeholder="Please enter your nickname." />
+				<label asp-for="Nickname" class="form-label">Nickname:</label>
+				<span asp-validation-for="Nickname" class="text-danger"></span>
+			</div>
+			<div class="d-inline-block mt-1">
+				<button type="submit" class="btn btn-primary">Update Profile</button>
+				<a asp-area="" asp-controller="User" asp-action="Password" class="btn btn-secondary">Change Password</a>
+			</div>
+		</form>
 	</div>
-	<div class="form-group">
-		<label asp-for="LastName">Last Name:</label>
-		<input asp-for="LastName" class="form-control" />
-		<span asp-validation-for="LastName" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<label asp-for="Email">Email:</label>
-		<input asp-for="Email" class="form-control" disabled />
-	</div>
-	<div class="form-group">
-		<label asp-for="Nickname">Nickname:</label>
-		<input asp-for="Nickname" class="form-control" />
-		<span asp-validation-for="Nickname" class="text-danger"></span>
-	</div>
-	<button type="submit" class="btn btn-primary mt-3">Update Profile</button>
-</form>
+</div>
 
 @section Scripts {
 	@{

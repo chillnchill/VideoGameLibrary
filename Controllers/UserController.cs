@@ -2,33 +2,77 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
-using VideoGameLibrary.Data.Models;
 using Microsoft.Extensions.Caching.Memory;
+using VideoGameLibrary.Data.Models;
+using VideoGameLibrary.Web.Infrastructure.Extensions;
 using VideoGameLibrary.Web.ViewModels.User;
-
 using static VideoGameLibrary.Common.GeneralApplicationConstants;
 using static VideoGameLibrary.Common.NotificationMessagesConstants;
 
 namespace VideoGameLibrary.Controllers
 {
-    public class UserController : Controller
-    {
+	public class UserController : Controller
+	{
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IMemoryCache memoryCache;
 
-        public UserController(SignInManager<ApplicationUser> signInManager,
-                              UserManager<ApplicationUser> userManager,
-                              IMemoryCache memoryCache)
+        public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, 
+            IMemoryCache memoryCache)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
-
             this.memoryCache = memoryCache;
         }
 
-        [HttpGet]
+		[HttpGet]
+		public async Task<IActionResult> Password()
+		{
+			if (!User.Identity.IsAuthenticated)
+			{
+				return RedirectToAction("Login", "User");
+			}
+
+			var user = await userManager.FindByNameAsync(User.Identity.Name);
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+            ChangePasswordViewModel model = new ChangePasswordViewModel();
+			return View(model);
+		}
+
+		[HttpPost]
+        [ValidateAntiForgeryToken]
+		public async Task<IActionResult> Password(ChangePasswordViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			ApplicationUser user = await userManager.FindByNameAsync(User.Identity!.Name);
+			if (user == null)
+			{
+				return NotFound(); 
+			}
+
+			IdentityResult changePasswordResult = await userManager.ChangePasswordAsync(user, model.OldPassword, model.Password);
+			if (!changePasswordResult.Succeeded)
+			{
+				foreach (var error in changePasswordResult.Errors)
+				{
+					ModelState.AddModelError(string.Empty, error.Description);
+				}
+				return View(model); 
+			}
+
+			TempData[SuccessMessage] = "Your password has been changed successfully!";
+			return RedirectToAction("Profile", "User"); 
+		}
+
+		[HttpGet]
         public async Task<IActionResult> Profile()
         {
             if (!User.Identity.IsAuthenticated)
@@ -36,13 +80,14 @@ namespace VideoGameLibrary.Controllers
                 return RedirectToAction("Login", "User");
             }
 
-            var user = await userManager.FindByNameAsync(User.Identity.Name);
+			ApplicationUser user = await userManager.FindByNameAsync(User.Identity!.Name);
+			user = await userManager.FindByNameAsync(User.Identity.Name);
             if (user == null)
             {
                 return NotFound();
             }
 
-            var model = new ProfileViewModel
+			ProfileViewModel model = new ProfileViewModel
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -54,6 +99,7 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Profile(ProfileViewModel model)
         {
             if (!User.Identity.IsAuthenticated)
@@ -172,7 +218,7 @@ namespace VideoGameLibrary.Controllers
                 return View(model);
             }
 
-            return Redirect(model.ReturnUrl ?? "/Game/All");
+			return Redirect(model.ReturnUrl ?? "/Game/All");
         }
     }
 }

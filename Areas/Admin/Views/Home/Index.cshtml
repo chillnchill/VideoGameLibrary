@@ -1,63 +1,62 @@
 ﻿<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
 
 @{
-    ViewData["Title"] = "Admin Dashboard";
+	ViewData["Title"] = "Admin Dashboard";
 }
 
 <div class="container mt-4">
-    <h2 class="text-center">Welcome to the Admin Dashboard</h2>
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Manage Moderators</h5>
-                    <p class="card-text text-dark">Manage moderators and their permissions.</p>
-                    <a href="@Url.Action("ManageModerators", "Admin")" class="btn btn-primary">Go to Moderators</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Ban Users</h5>
-                    <p class="card-text text-dark">Ban/unban users and manage banned user lists.</p>
-                    <a href="@Url.Action("BanUsers", "Admin")" class="btn btn-primary">Go to Banned Users</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<h2 class="text-center">Welcome to the Admin Dashboard</h2>
+	<div class="row mt-4">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Moderators</h5>
+					<p class="card-text text-dark">Manage moderators and their permissions.</p>
+					<a href="@Url.Action("ManageModerators", "Admin")" class="btn btn-primary">Go to Moderators</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">View Users</h5>
+					<p class="card-text text-dark">View all users in the library</p>
+					<a asp-area="Admin" asp-controller="User" asp-action="All" class="btn btn-primary">Go to Users</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Manage Games</h5>
-                    <p class="card-text text-dark">Add, edit, and delete games in the library.</p>
-                    <a href="@Url.Action("ManageGames", "Admin")" class="btn btn-primary">Go to Games</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Manage Platforms</h5>
-                    <p class="card-text text-dark">Add, edit, and delete platforms.</p>
-                    <a href="@Url.Action("ManagePlatforms", "Admin")" class="btn btn-primary">Go to Platforms</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row mt-4">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Games</h5>
+					<p class="card-text text-dark">Add, edit, and delete games in the library.</p>
+					<a asp-area="" asp-controller="Game" asp-action="All" class="btn btn-primary">Go to Games</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Platforms</h5>
+					<p class="card-text text-dark">Add, edit, and delete platforms in the library.</p>
+					<a asp-area="" asp-controller="Platform" asp-action="PlatformCrud" class="btn btn-primary">Go to Games</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Manage Genres</h5>
-                    <p class="card-text text-dark">Add, edit, and delete genres.</p>
-                    <a href="@Url.Action("ManageGenres", "Admin")" class="btn btn-primary">Go to Genres</a>
-                </div>
-            </div>
-        </div>
-        <!-- Add more cards for additional functionalities -->
-    </div>
+	<div class="row mt-4">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Genres</h5>
+					<p class="card-text text-dark">Add, edit, and delete genres in the library.</p>
+					<a asp-area="" asp-controller="Genre" asp-action="GenreCrud" class="btn btn-primary">Go to Games</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
