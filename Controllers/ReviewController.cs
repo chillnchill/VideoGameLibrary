@@ -68,6 +68,7 @@ namespace VideoGameLibrary.Controllers
 				return RedirectToAction("All", "Game");
 			}
 
+			model.Id = Guid.NewGuid().ToString();
 			model.OwnerId = userId;
 			bool gameExists = await gameService.ExistsByIdAsync(model.GameId);
 
@@ -102,7 +103,7 @@ namespace VideoGameLibrary.Controllers
 
 
 		[HttpGet]
-		public async Task<IActionResult> Edit(int id)
+		public async Task<IActionResult> Edit(string id)
 		{
 			string userId = User.GetId()!;
 			if (userId == null)
@@ -181,7 +182,7 @@ namespace VideoGameLibrary.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(int id)
+		public async Task<IActionResult> Delete(string id)
 		{
 			string userId = User.GetId()!;
 			if (userId == null)
