@@ -278,3 +278,4 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\r
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
