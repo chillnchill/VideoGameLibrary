@@ -19,7 +19,14 @@
 					<form asp-controller="Game" asp-action="Like" method="post">
 						<input type="hidden" name="gameId" value="@Model.Id" />
 						<button type="submit" class="btn btn-primary like-button">
-							<i id="like-icon-@Model.Id" class="heart-icon far fa-heart"></i> Like
+							<i id="like-icon-@Model.Id" class="heart-icon fas fa-heart"></i> Like
+						</button>
+					</form>
+
+					<form asp-controller="Game" asp-action="Dislike" method="post">
+						<input type="hidden" name="gameId" value="@Model.Id" />
+						<button type="submit" class="btn btn-primary like-button">
+							<i id="like-icon-@Model.Id" class="fas fa-heart-broken"></i> Dislike
 						</button>
 					</form>
 				}

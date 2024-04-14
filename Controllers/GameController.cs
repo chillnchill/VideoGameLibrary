@@ -378,8 +378,46 @@ namespace VideoGameLibrary.Controllers
 			}
 		}
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Dislike(string gameId)
+        {
+            bool gameExists = await gameService.ExistsByIdAsync(gameId);
 
-		private IActionResult GeneralError()
+            if (!gameExists)
+            {
+                TempData[ErrorMessage] = "Game with the provided id does not exist!";
+                return RedirectToAction("All", "Game");
+            }
+
+            string userId = User.GetId()!;
+
+            if (userId == null)
+            {
+                TempData[ErrorMessage] = "You must be logged in to dislike a game!";
+                return RedirectToAction("All", "Game");
+            }
+
+			bool isGameInLikedList = await userService.IsGameInLikedListAsync(gameId, userId);
+			if (!isGameInLikedList)
+			{
+                TempData[ErrorMessage] = "The game is not in your liked list!";
+                return RedirectToAction("All", "Game");
+            }
+
+            try
+            {
+                await userService.UnlikeGameAsync(userId, gameId);
+                TempData[SuccessMessage] = "The game was removed from yourliked list!";
+                return RedirectToAction("All", "Game");
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
+        }
+
+        private IActionResult GeneralError()
 		{
 			TempData[ErrorMessage] =
 				"Unexpected error occurred! Please try again later or contact administrator";
