@@ -34,10 +34,14 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 .AddRoles<IdentityRole<Guid>>()
 .AddEntityFrameworkStores<VideoGameLibraryDbContext>();
 
+
 builder.Services.AddApplicationServices(typeof(IGameService));
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 
 builder.Services.AddRecaptchaService();
+
+builder.Services.AddMemoryCache();
+builder.Services.AddResponseCaching();
 
 builder.Services.ConfigureApplicationCookie(cfg =>
 {
@@ -71,10 +75,14 @@ else
 	app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseResponseCaching();
 
 app.UseAuthentication();
 app.UseAuthorization();

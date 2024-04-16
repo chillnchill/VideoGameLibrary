@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Admin/Views/Game/DeletedGames.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FtZVxEZWxldGVkR2FtZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jojoc/Desktop/SoftUni/ASP.NET/Final/VideoGameLibrary/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

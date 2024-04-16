@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using VideoGameLibrary.Data.Models;
+using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
 using VideoGameLibrary.Web.ViewModels.User;
 using static VideoGameLibrary.Common.GeneralApplicationConstants;
@@ -16,14 +17,35 @@ namespace VideoGameLibrary.Controllers
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IMemoryCache memoryCache;
+        private readonly IUserService userService;
 
         public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, 
-            IMemoryCache memoryCache)
+            IMemoryCache memoryCache, IUserService userService)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.memoryCache = memoryCache;
+            this.userService = userService; 
         }
+
+        //response caching is different because instead in the database, it caches into the browser
+		[ResponseCache(Duration = 30, Location = ResponseCacheLocation.Client, NoStore = false)]
+		public async Task<IActionResult> All()
+		{
+			IEnumerable<UserViewModel> users = memoryCache.Get<IEnumerable<UserViewModel>>(UsersCacheKey);
+			if (users == null)
+			{
+				users = await userService.AllAsync();
+
+				MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions()
+					.SetAbsoluteExpiration(TimeSpan
+						.FromMinutes(UsersCacheDurationMinutes));
+
+				memoryCache.Set(UsersCacheKey, users, cacheOptions);
+			}
+
+			return View(users);
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> Password()
@@ -33,7 +55,7 @@ namespace VideoGameLibrary.Controllers
 				return RedirectToAction("Login", "User");
 			}
 
-			var user = await userManager.FindByNameAsync(User.Identity.Name);
+			ApplicationUser user = await userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null)
 			{
 				return NotFound();

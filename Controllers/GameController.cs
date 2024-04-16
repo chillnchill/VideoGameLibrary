@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Services.Data.Models.Game;
@@ -73,9 +74,15 @@ namespace VideoGameLibrary.Controllers
 		[AllowAnonymous]
 		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
-
-
-			AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
+            //TempData["IsAdminRedirected"] as bool? tries to cast TempData["IsAdminRedirected"]
+			//to a nullable boolean (bool?).
+			//If the cast fails or if the value is null, ?? false provides a default value of false.
+            if (User.IsInRole(AdminRoleName) && !(TempData["IsAdminRedirected"] as bool? ?? false))
+            {
+                TempData["IsAdminRedirected"] = true;
+                return RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            }
+            AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
 
 			queryModel.Games = model.Games;
 			queryModel.TotalGames = model.TotalGamesCount;
