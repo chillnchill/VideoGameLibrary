@@ -12,7 +12,8 @@
 				<div class="card-body">
 					<h5 class="card-title">Manage Moderators</h5>
 					<p class="card-text text-dark">Manage moderators and their permissions.</p>
-					<a href="@Url.Action("ManageModerators", "Admin")" class="btn btn-primary">Go to Moderators</a>
+					<a asp-area="Admin" asp-controller="Moderator" asp-action="AllSubmissions" class="btn btn-primary">Go to Submissions</a>
+					<a asp-area="Admin" asp-controller="Moderator" asp-action="AllModerators" class="btn btn-primary">All Moderators</a>
 				</div>
 			</div>
 		</div>

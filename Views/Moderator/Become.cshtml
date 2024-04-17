@@ -13,16 +13,13 @@
         <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
     </div>
 
-@*     <div class="mb-3">
-        <label asp-for="@Model.Nickname" class="form-label-add-edit">Nickname</label>
-        <input asp-for="@Model.Nickname" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Nickname" class="text-danger"></span>
-    </div> *@
-
     <div class="mb-3">
-        <label asp-for="@Model.AboutMe">Tell us about yourself:</label>        
+        <label asp-for="@Model.AboutMe">Tell us about yourself:</label>
         <textarea asp-for="AboutMe" class="form-control" rows="5" placeholder="Share your experience, interests, and why you'd make a great moderator"></textarea>
+        <span asp-validation-for="@Model.AboutMe" class="text-danger"></span>
     </div>
+
+    <input type="hidden" asp-for="@Model.IsSubmitted" value="true" />
 
     <button type="submit" class="btn btn-primary">Apply to Become a Moderator</button>
 </form>

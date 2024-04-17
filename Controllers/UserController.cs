@@ -181,7 +181,8 @@ namespace VideoGameLibrary.Controllers
             ApplicationUser user = new ApplicationUser()
             {
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                Nickname = model.Nickname,
             };
 
             await userManager.SetEmailAsync(user, model.Email);

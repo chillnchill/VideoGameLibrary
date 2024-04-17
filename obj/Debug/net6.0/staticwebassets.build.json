@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E3m8aaWH2kG4PKcUvBCB7PyA32laL0pDZCPKyRUEhEY=",
+  "Hash": "sE/qYdTWFJTzM5WcHertOXp7fJIm2vra6zeY8he+lNI=",
   "Source": "VideoGameLibrary",
   "BasePath": "_content/VideoGameLibrary",
   "Mode": "Default",
@@ -1326,25 +1326,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\jquery-override.js"
-    },
-    {
-      "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\like-toggle.js",
-      "SourceId": "VideoGameLibrary",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\",
-      "BasePath": "_content/VideoGameLibrary",
-      "RelativePath": "js/like-toggle.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\like-toggle.js"
     },
     {
       "Identity": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\site.js",

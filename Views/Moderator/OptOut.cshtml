@@ -1,29 +1,22 @@
-﻿@using VideoGameLibrary.Web.ViewModels.Moderator
-@model ModeratorOptOutViewModel
+﻿@model ModeratorOptOutViewModel
+
 <link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
 
 <h1>Opt Out of Moderator Role</h1>
 
 <p>Are you sure you want to opt out of the moderator role?</p>
 
-<form method="post" action="@Url.Action("OptOut", "Moderator")">
+<form method="post" asp-action="Remove" asp-controller="Moderator" asp-area="">
+    <div class="mb-3">
+        <input asp-for="Id" type="hidden" />
+    </div>
     <div class="mb-3">
         <label asp-for="PhoneNumber" class="form-label-add-edit">Phone Number</label>
         <input asp-for="PhoneNumber" class="form-control" aria-required="true" />
         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-@*     </div>
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label-add-edit">Password</label>
-        <input type="password" asp-for="Password" class="form-control" aria-required="true" />
-        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="ConfirmPassword" class="form-label-add-edit">Confirm Password</label>
-        <input type="password" asp-for="ConfirmPassword" class="form-control" aria-required="true" />
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div> *@
-    <div class="mb-3">
         <button type="submit" name="optOut" value="true" class="btn btn-primary">Yes, I'm sure</button>
-        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">No, take me back</a>
+        <a href="@Url.Action("All", "Game")" class="btn btn-secondary">No, take me back</a>
     </div>
 </form>

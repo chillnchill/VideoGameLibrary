@@ -1,0 +1,70 @@
+﻿@using VideoGameLibrary.Services.Data.Interfaces
+@using VideoGameLibrary.Web.ViewModels.Moderator
+@model IEnumerable<ModeratorApplicationViewModel>
+@inject IModeratorService ModeratorService;
+
+
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+@{
+	ViewData["Title"] = "Manage Moderators";
+}
+
+<div class="container mt-4">
+	<h2 class="text-center">Moderator Applications</h2>
+
+	<div class="row mt-4">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Phone Number</th>
+						<th>About Me</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var application in Model)
+					{
+						bool isUserModerator = await ModeratorService.ModeratorExistsByUserIdAsync(application.Id!);
+
+						<tr>
+							<td>@application.Nickname</td>
+							<td>@application.PhoneNumber</td>
+							<td>@application.AboutMe</td>
+							<td>
+								@if (isUserModerator)
+								{
+									<button type="button" class="btn btn-success" disabled>Approved</button>
+								}
+								else
+								{
+									<form method="post" asp-area="Admin" asp-action="Approve" asp-controller="Moderator">
+										<input type="hidden" name="Id" value="@application.Id" />
+										<input type="hidden" name="Nickname" value="@application.Nickname" />
+										<input type="hidden" name="PhoneNumber" value="@application.PhoneNumber" />
+										<input type="hidden" name="AboutMe" value="@application.AboutMe" />
+										<button type="submit" class="btn btn-primary">Approve</button>
+									</form>
+
+									<form class="mt-2" method="post" asp-area="Admin" asp-action="Decline" asp-controller="Moderator">
+										<input type="hidden" name="Id" value="@application.Id" />
+										<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to decline this submission?')">Decline</button>
+									</form>
+
+								}
+							</td>
+						</tr>
+					}
+					@if (!Model.Any())
+					{
+						<tr>
+							<td colspan="4">No moderator applications found.</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+﻿@using VideoGameLibrary.Services.Data.Interfaces
+@using VideoGameLibrary.Web.ViewModels.Moderator
+@model IEnumerable<ModeratorApplicationViewModel>
+
+<link rel="stylesheet" href="~/css/dark.css" asp-append-version="true" />
+
+@{
+	ViewData["Title"] = "Manage Moderators";
+}
+
+<div class="container mt-4">
+	<h2 class="text-center">Moderator Applications</h2>
+
+	<div class="row mt-4">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Phone Number</th>
+						<th>About Me</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var application in Model)
+					{
+						<tr>
+							<td>@application.Nickname</td>
+							<td>@application.PhoneNumber</td>
+							<td>@application.AboutMe</td>
+						</tr>
+					}
+					@if (!Model.Any())
+					{
+						<tr>
+							<td colspan="4">There are no moderators in the game library yet.</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

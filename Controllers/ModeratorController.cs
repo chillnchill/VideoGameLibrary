@@ -37,7 +37,6 @@ namespace VideoGameLibrary.Controllers
 			return View();
 		}
 
-
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Become(ModeratorApplicationViewModel model)
@@ -71,14 +70,13 @@ namespace VideoGameLibrary.Controllers
 
 			try
 			{
-				await moderatorService.Create(userId!, model);
-				TempData[SuccessMessage] = "Applied successfully!";
+				await moderatorService.Submit(userId!, model);
+				TempData[SuccessMessage] = "You've successfully applied to be a moderator!";
 			}
 			catch (Exception)
 			{
 				TempData[ErrorMessage] =
 					"Unexpected error occurred while trying to submit your form to become a moderator. Please try again later!";
-
 				return View(model);
 			}
 
@@ -121,48 +119,41 @@ namespace VideoGameLibrary.Controllers
 
 		}
 
-		//[HttpPost]
-		//public async Task<IActionResult> OptOut(ModeratorOptOutViewModel model)
-		//{
-		//	if (ModelState.IsValid)
-		//	{
-		//		string userId = User.GetId()!;
-		//		string moderatorId = await moderatorService.GetModeratorIdByUserIdAsync(userId);
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Remove()
+		{
+			string userId = User.GetId()!;
+			bool isModerator = await moderatorService.ModeratorExistsByUserIdAsync(userId!);
 
-		//		try
-		//		{
-		//			var moderator = await _context.Moderators.FindAsync(moderatorId);
-		//			if (moderator != null)
-		//			{
-		//				// Validate password (using your password hashing logic)
-		//				if (await _userManager.CheckPasswordAsync(moderator, model.Password))
-		//				{
-		//					moderator.IsApproved = false;
-		//					_context.Update(moderator);
-		//					await _context.SaveChangesAsync();
-		//					return RedirectToAction("Confirmation", "Moderator"); // Redirect to confirmation view
-		//				}
-		//				else
-		//				{
-		//					ModelState.AddModelError(string.Empty, "Invalid password!");
-		//				}
-		//			}
-		//			else
-		//			{
-		//				ModelState.AddModelError(string.Empty, "Moderator not found!");
-		//			}
-		//		}
-		//		catch (Exception)
-		//		{
-		//			return GeneralError(); // Handle general error
-		//		}
-		//	}
+			if (!isModerator)
+			{
+				TempData[ErrorMessage] = "You need to be a moderator!";
 
-		//	// Re-populate view model with existing values (optional)
-		//	model.PhoneNumber = await moderatorService.GetPhoneNumberByModeratorIdAsync(moderatorId); // Assuming you have this method
+				return RedirectToAction("All", "Game");
+			}
 
-		//	return View(model); // Return view with validation errors
-		//}
+			string moderatorId = await moderatorService.GetModeratorIdByUserIdAsync(userId);
+
+			if (string.IsNullOrEmpty(moderatorId))
+			{
+				TempData[ErrorMessage] = "Moderator does not exist!";
+
+				return RedirectToAction("All", "Game");
+			}
+
+			try
+			{
+				await moderatorService.RemoveModeratorAsync(moderatorId);
+				TempData[SuccessMessage] = "You successfully opted out of being a moderator!";
+				return RedirectToAction("All", "Game");
+			}
+			catch (Exception)
+			{
+				return GeneralError();
+			}
+
+		}
 
 		private IActionResult GeneralError()
 		{

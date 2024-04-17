@@ -33,10 +33,6 @@
       "PackagePath": "staticwebassets\\js\\jquery-override.js"
     },
     {
-      "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\like-toggle.js",
-      "PackagePath": "staticwebassets\\js\\like-toggle.js"
-    },
-    {
       "Id": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
