@@ -5,7 +5,8 @@ using VideoGameLibrary.Web.ViewModels.User;
 
 namespace VideoGameLibrary.Areas.Admin.Controllers
 {
-    public class UserController : BaseAdminController
+	using static Common.GeneralApplicationConstants;
+	public class UserController : BaseAdminController
     {
         private readonly IUserService userService;
         private readonly IMemoryCache memoryCache;
@@ -16,26 +17,24 @@ namespace VideoGameLibrary.Areas.Admin.Controllers
             this.memoryCache = memoryCache;
         }
         [Route("User/All")]
-       // [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Client, NoStore = false)]
+        [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Client, NoStore = false)]
         public async Task<IActionResult> All()
         {
-            //IEnumerable<UserViewModel> users =
-            //    this.memoryCache.Get<IEnumerable<UserViewModel>>(UsersCacheKey);
-            //if (users == null)
-            //{
-            //    users = await this.userService.AllAsync();
+            IEnumerable<UserViewModel> users =
+                this.memoryCache.Get<IEnumerable<UserViewModel>>(UsersCacheKey);
+            if (users == null)
+            {
+                users = await this.userService.AllAsync();
 
-            //    MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions()
-            //        .SetAbsoluteExpiration(TimeSpan
-            //            .FromMinutes(UsersCacheDurationMinutes));
+                MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan
+                        .FromMinutes(UsersCacheDurationMinutes));
 
-            //    this.memoryCache.Set(UsersCacheKey, users, cacheOptions);
-            //}
+                this.memoryCache.Set(UsersCacheKey, users, cacheOptions);
+            }
 
-            //return View(users);
+            return View(users);
 
-            IEnumerable<UserViewModel> viewModel = await userService.AllAsync();
-            return View(viewModel);
         }
     }
 }

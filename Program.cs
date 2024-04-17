@@ -10,7 +10,7 @@ using static VideoGameLibrary.Common.GeneralApplicationConstants;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 string connectionString =
 	builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -58,19 +58,17 @@ builder.Services.AddControllersWithViews()
 
 WebApplication app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
 
 	app.UseMigrationsEndPoint();
-	//this will show us exactly what went wrong in the web page whenever it booms
 	app.UseDeveloperExceptionPage();
 
 }
 else
 {
 	app.UseExceptionHandler("/Home/Error/500");
-	//this is for the custom error pages
 	app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
 	app.UseHsts();
 }

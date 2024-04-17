@@ -74,9 +74,7 @@ namespace VideoGameLibrary.Controllers
 		[AllowAnonymous]
 		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
-            //TempData["IsAdminRedirected"] as bool? tries to cast TempData["IsAdminRedirected"]
-			//to a nullable boolean (bool?).
-			//If the cast fails or if the value is null, ?? false provides a default value of false.
+
             if (User.IsInRole(AdminRoleName) && !(TempData["IsAdminRedirected"] as bool? ?? false))
             {
                 TempData["IsAdminRedirected"] = true;
