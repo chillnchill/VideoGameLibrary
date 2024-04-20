@@ -17,6 +17,6 @@ There are 4 levels of access in it:
 
 I do not have the rights to the background image of the landing page, nor the game cover images
 sources:
-landing page - https://alphacoders.com/
-Front covers - https://howlongtobeat.com
+- landing page - https://alphacoders.com/
+- Front covers - https://howlongtobeat.com
 
