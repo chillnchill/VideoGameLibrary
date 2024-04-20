@@ -1,7 +1,8 @@
 The application is ment for storing detailed information about video games. 
 -You can add/edit/delete games, you can leave reviews under your game and share opinions with fellow gamers 
 
-There are 4 levels of access in it
+There are 4 levels of access in it:
+
 1)Unlogged users can only view the games that are already stored in it
 
 2)Logged in users can view the games, add their own (including editing games they've added) and leaving reviews on all existing games. They have access and control over two lists
