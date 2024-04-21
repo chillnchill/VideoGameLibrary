@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "VideoGameLibrary.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Web.ViewModels.dll": {}
+        }
+      },
+      "VideoGameLibrary.Common/1.0.0": {
+        "runtime": {
+          "VideoGameLibrary.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VideoGameLibrary.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

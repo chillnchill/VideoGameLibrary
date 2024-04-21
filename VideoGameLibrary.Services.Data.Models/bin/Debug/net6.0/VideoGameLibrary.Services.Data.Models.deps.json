@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "VideoGameLibrary.Services.Data.Models/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Services.Data.Models.dll": {}
+        }
+      },
+      "VideoGameLibrary.Common/1.0.0": {
+        "runtime": {
+          "VideoGameLibrary.Common.dll": {}
+        }
+      },
+      "VideoGameLibrary.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "VideoGameLibrary.Common": "1.0.0"
+        },
+        "runtime": {
+          "VideoGameLibrary.Web.ViewModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VideoGameLibrary.Services.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VideoGameLibrary.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
