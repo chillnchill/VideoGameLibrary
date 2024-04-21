@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.Infrastructure.Extensions;
 using VideoGameLibrary.Web.ViewModels.Moderator;
 
 namespace VideoGameLibrary.Areas.Admin.Controllers
 {
-    using static VideoGameLibrary.Common.NotificationMessagesConstants;
-    public class ModeratorController : BaseAdminController
+	using static VideoGameLibrary.Common.NotificationMessagesConstants;
+	public class ModeratorController : BaseAdminController
 	{
 		private IModeratorService moderatorService;
 

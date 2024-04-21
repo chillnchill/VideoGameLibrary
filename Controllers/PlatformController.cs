@@ -52,7 +52,6 @@ namespace VideoGameLibrary.Controllers
 
 			try
 			{
-				// Add the platform using the provided model
 				await platformService.AddPlatformAsync(model);
 				TempData[SuccessMessage] = "Platform added successfully!";
 				return RedirectToAction("PlatformCrud", "Platform");
@@ -60,7 +59,6 @@ namespace VideoGameLibrary.Controllers
 			catch (Exception)
 			{
 				ModelState.AddModelError(string.Empty, "Unexpected error occurred while trying to add a new platform!");
-				// If an error occurs, return the view with the same model
 				model.ExistingPlatforms = await platformService.AllPlatformsAsync();
 				return View(model);
 			}

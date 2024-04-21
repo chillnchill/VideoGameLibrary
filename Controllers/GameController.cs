@@ -75,11 +75,11 @@ namespace VideoGameLibrary.Controllers
 		public async Task<IActionResult> All([FromQuery] AllGamesQueryModel queryModel)
 		{
 
-            if (User.IsInRole(AdminRoleName) && !(TempData["IsAdminRedirected"] as bool? ?? false))
-            {
-                TempData["IsAdminRedirected"] = true;
-                return RedirectToAction("Index", "Home", new { Area = AdminAreaName });
-            }
+            //if (User.IsInRole(AdminRoleName) && !(TempData["IsAdminRedirected"] as bool? ?? false))
+            //{
+            //    TempData["IsAdminRedirected"] = true;
+            //    return RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            //}
             AllGamesFilteredAndSortingModel model = await gameService.GetAllGamesSortingAsync(queryModel);
 
 			queryModel.Games = model.Games;
@@ -285,7 +285,7 @@ namespace VideoGameLibrary.Controllers
 
 			if (!gameExists)
 			{
-				TempData[ErrorMessage] = "Game with the provided id does not exist!";
+				TempData[ErrorMessage] = "The game does not exist!";
 				return RedirectToAction("All", "Game");
 			}
 
@@ -326,7 +326,7 @@ namespace VideoGameLibrary.Controllers
 			bool gameExists = await gameService.ExistsByIdAsync(id);
 			if (!gameExists)
 			{
-				TempData[ErrorMessage] = "Game with the provided id does not exist!";
+				TempData[ErrorMessage] = "The game was successfully deleted!";
 				return RedirectToAction("All", "Game");
 			}
 
@@ -359,7 +359,7 @@ namespace VideoGameLibrary.Controllers
 
 			if (!gameExists)
 			{
-				TempData[ErrorMessage] = "Game with the provided id does not exist!";
+				TempData[ErrorMessage] = "The game does not exist!";
 				return RedirectToAction("All", "Game");
 			}
 
@@ -391,8 +391,8 @@ namespace VideoGameLibrary.Controllers
 
             if (!gameExists)
             {
-                TempData[ErrorMessage] = "Game with the provided id does not exist!";
-                return RedirectToAction("All", "Game");
+				TempData[ErrorMessage] = "The game does not exist!";
+				return RedirectToAction("All", "Game");
             }
 
             string userId = User.GetId()!;

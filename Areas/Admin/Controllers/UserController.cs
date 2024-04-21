@@ -21,16 +21,16 @@ namespace VideoGameLibrary.Areas.Admin.Controllers
         public async Task<IActionResult> All()
         {
             IEnumerable<UserViewModel> users =
-                this.memoryCache.Get<IEnumerable<UserViewModel>>(UsersCacheKey);
+                memoryCache.Get<IEnumerable<UserViewModel>>(UsersCacheKey);
             if (users == null)
             {
-                users = await this.userService.AllAsync();
+                users = await userService.AllAsync();
 
                 MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(TimeSpan
                         .FromMinutes(UsersCacheDurationMinutes));
 
-                this.memoryCache.Set(UsersCacheKey, users, cacheOptions);
+                memoryCache.Set(UsersCacheKey, users, cacheOptions);
             }
 
             return View(users);

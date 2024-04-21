@@ -53,7 +53,6 @@ namespace VideoGameLibrary.Controllers
 
             try
             {
-                // Add the platform using the provided model
                 await genreService.AddGenreAsync(model);
                 TempData[SuccessMessage] = "Genre added successfully!";
                 return RedirectToAction("GenreCrud", "Genre");
@@ -61,7 +60,6 @@ namespace VideoGameLibrary.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError(string.Empty, "Unexpected error occurred while trying to add a new genre!");
-                // If an error occurs, return the view with the same model
                 model.ExistingGenres = await genreService.AllGenresAsync();
                 return View(model);
             }
@@ -148,15 +146,24 @@ namespace VideoGameLibrary.Controllers
             }
 
             //put this in try-catch
-            Genre genre = await genreService.FetchGenreByIdAsync(id);
-            GenreDeleteViewModel model = new GenreDeleteViewModel()
+            try
             {
-                Id = genre.Id,
-                Name = genre.Name,
-            };
+				Genre genre = await genreService.FetchGenreByIdAsync(id);
+				GenreDeleteViewModel model = new GenreDeleteViewModel()
+				{
+					Id = genre.Id,
+					Name = genre.Name,
+				};
 
-            return View(model);
-        }
+				return View(model);
+			}
+			catch (Exception)
+			{
+				TempData[ErrorMessage] = "Something went wrong while trying to delete genre, please try again later";
+				return RedirectToAction("GenreCrud", "Genre");
+			}
+
+		}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
