@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -24,6 +24,7 @@
     <ProjectReference Include="..\VideoGameLibrary.Services.Data.Models\VideoGameLibrary.Services.Data.Models.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Services.Data\VideoGameLibrary.Services.Data.csproj" />
     <ProjectReference Include="..\VideoGameLibrary.Web.ViewModels\VideoGameLibrary.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\VideoGameLibrary\VideoGameLibrary.csproj" />
   </ItemGroup>
 
 </Project>

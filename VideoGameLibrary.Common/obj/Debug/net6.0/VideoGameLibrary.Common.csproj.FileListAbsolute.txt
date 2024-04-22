@@ -9,3 +9,15 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Common\obj\Debug\n
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Common\obj\Debug\net6.0\refint\VideoGameLibrary.Common.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Common\obj\Debug\net6.0\ref\VideoGameLibrary.Common.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\bin\Debug\net6.0\VideoGameLibrary.Common.deps.json
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\bin\Debug\net6.0\VideoGameLibrary.Common.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\bin\Debug\net6.0\VideoGameLibrary.Common.pdb
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.AssemblyInfoInputs.cache
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.AssemblyInfo.cs
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.csproj.CoreCompileInputs.cache
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.sourcelink.json
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\refint\VideoGameLibrary.Common.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\VideoGameLibrary.Common.pdb
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\VideoGameLibrary.Common\obj\Debug\net6.0\ref\VideoGameLibrary.Common.dll
