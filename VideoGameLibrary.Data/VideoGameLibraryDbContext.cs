@@ -17,7 +17,6 @@ namespace VideoGameLibrary.Data
         public DbSet<Genre> Genres { get; set; } = null!;
         public DbSet<Platform> Platforms { get; set; } = null!;
         public DbSet<Review> Reviews { get; set; } = null!;
-        public DbSet<Screenshot> Screenshots { get; set; } = null!;
         public DbSet<Moderator> Moderators { get; set; } = null!;
         public DbSet<GameModerator> GamesModerators { get; set; } = null!;
         public DbSet<UserModerator> UsersModerators { get; set; } = null!;

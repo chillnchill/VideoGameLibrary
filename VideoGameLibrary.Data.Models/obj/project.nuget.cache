@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mtukuKtH9E50GDcnlRUyCJBATXRR7rKEKOwBkuubT4kn3W39cff59roCvuIK4jQOPOObir5cKE5ofvc6kCqnIQ==",
+  "dgSpecHash": "P0k6v+uM4eAzK3OURjgGVTeIEFxvfyW8Weg1vX4HBqzWasyq54bPXPn2iHjsMSpOMW3xwk7iR4/OaqeNgWY4ow==",
   "success": true,
   "projectFilePath": "C:\\Users\\jojoc\\Desktop\\SoftUni\\ASP.NET\\Final\\VideoGameLibrary.Data.Models\\VideoGameLibrary.Data.Models.csproj",
   "expectedPackageFiles": [
@@ -18,7 +18,9 @@
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\jojoc\\.nuget\\packages\\mongodb.bson\\2.25.0\\mongodb.bson.2.25.0.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\jojoc\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\jojoc\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

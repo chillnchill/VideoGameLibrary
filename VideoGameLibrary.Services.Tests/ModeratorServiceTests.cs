@@ -6,7 +6,7 @@ using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.ViewModels.Genre;
 using VideoGameLibrary.Web.ViewModels.Moderator;
 
-namespace VideoGameLibrary.Services.Tests
+namespace VideoGameLibrary.Tests
 {
 	using static DbSeeder;
 	public class ModeratorServiceTests
@@ -129,13 +129,13 @@ namespace VideoGameLibrary.Services.Tests
 					.Include(m => m.User)
 					.FirstOrDefault(m => m.Id == Guid.Parse(viewModel.Id));
 
-				Assert.IsNotNull(moderator); 
-				Assert.AreEqual(moderator.User.Nickname, viewModel.Nickname); 
+				Assert.IsNotNull(moderator);
+				Assert.AreEqual(moderator.User.Nickname, viewModel.Nickname);
 				Assert.AreEqual(moderator.PhoneNumber, viewModel.PhoneNumber);
 				Assert.AreEqual(moderator.AboutMe, viewModel.AboutMe);
 			}
 		}
 
-		
+
 	}
 }

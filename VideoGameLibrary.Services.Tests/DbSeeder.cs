@@ -1,4 +1,4 @@
-﻿namespace VideoGameLibrary.Services.Tests
+﻿namespace VideoGameLibrary.Tests
 {
 	using VideoGameLibrary.Data;
 	using VideoGameLibrary.Data.Models;

@@ -8,6 +8,7 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.AssemblyInfoInputs.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.AssemblyInfo.cs
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.sourcelink.json
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.csproj.CopyComplete
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\VideoGameLibrary.Web.ViewModels.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.ViewModels\obj\Debug\net6.0\refint\VideoGameLibrary.Web.ViewModels.dll

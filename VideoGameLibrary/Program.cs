@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using MongoDB.Driver;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Data.Models;
 using VideoGameLibrary.ModelBinders;
@@ -16,6 +17,15 @@ string connectionString =
 
 builder.Services.AddDbContext<VideoGameLibraryDbContext>(options =>
 	options.UseSqlServer(connectionString));
+
+builder.Services.AddSingleton<MongoScreenshotContext>(sp =>
+{
+	var configuration = sp.GetRequiredService<IConfiguration>();
+	string mongoConnectionString = builder.Configuration.GetConnectionString("ConnectionString");
+
+	MongoClient client = new MongoClient(mongoConnectionString);
+	return new MongoScreenshotContext(client, configuration);
+});
 
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>

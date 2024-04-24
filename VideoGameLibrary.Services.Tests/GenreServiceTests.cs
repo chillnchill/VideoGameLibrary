@@ -5,7 +5,7 @@ using VideoGameLibrary.Services.Data;
 using VideoGameLibrary.Services.Data.Interfaces;
 using VideoGameLibrary.Web.ViewModels.Genre;
 
-namespace VideoGameLibrary.Services.Tests
+namespace VideoGameLibrary.Tests
 {
 	using static DbSeeder;
 	public class GenreServiceTests

@@ -279,3 +279,16 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\r
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\VideoGameLibrary.genruntimeconfig.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\obj\Debug\net6.0\ref\VideoGameLibrary.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\DnsClient.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\Snappier.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll

@@ -9,7 +9,7 @@ using VideoGameLibrary.Web.ViewModels.Game;
 using VideoGameLibrary.Web.ViewModels.Game.Enums;
 using VideoGameLibrary.Web.ViewModels.Game.VideoGameLibrary.Web.ViewModels.Game;
 
-namespace VideoGameLibrary.Services.Tests
+namespace VideoGameLibrary.Tests
 {
 	using static DbSeeder;
 	public class GameServiceTests
@@ -43,7 +43,7 @@ namespace VideoGameLibrary.Services.Tests
 			Assert.IsTrue(result);
 		}
 
-		
+
 		[Test]
 		public async Task GetAllGamesSortingAsync_ReturnsCorrectResult()
 		{
@@ -67,10 +67,10 @@ namespace VideoGameLibrary.Services.Tests
 		[Test, Order(1)]
 		public async Task GetGameDetailsByIdAsync_ReturnsCorrectDetails_WhenGameExists()
 		{
-			Game seededGame = await dbContext.Games.FirstOrDefaultAsync(); 
+			Game seededGame = await dbContext.Games.FirstOrDefaultAsync();
 			string gameId = seededGame?.Id.ToString();
-			string expectedTitle = seededGame?.Title; 
-			string expectedDescription = seededGame?.Description; 													  
+			string expectedTitle = seededGame?.Title;
+			string expectedDescription = seededGame?.Description;
 
 			GameDetailsViewModel result = await gameService.GetGameDetailsByIdAsync(gameId);
 
@@ -94,9 +94,9 @@ namespace VideoGameLibrary.Services.Tests
 		[Test]
 		public async Task IsOwnerWithIdCreatorOfGameWithId_ReturnsFalse_WhenOwnerIsNotCreator()
 		{
-			Game seededGame = await dbContext.Games.FirstOrDefaultAsync(); 
-			string gameId = seededGame?.Id.ToString(); 
-			string ownerId = "some_other_owner_id"; 
+			Game seededGame = await dbContext.Games.FirstOrDefaultAsync();
+			string gameId = seededGame?.Id.ToString();
+			string ownerId = "some_other_owner_id";
 
 			bool result = await gameService.IsOwnerWithIdCreatorOfGameWithId(gameId, ownerId);
 
@@ -106,8 +106,8 @@ namespace VideoGameLibrary.Services.Tests
 		[Test]
 		public async Task DeleteGameAsync_MarksGameAsDeleted()
 		{
-			Game seededGame = await dbContext.Games.FirstOrDefaultAsync(); 
-			string gameId = seededGame?.Id.ToString(); 
+			Game seededGame = await dbContext.Games.FirstOrDefaultAsync();
+			string gameId = seededGame?.Id.ToString();
 
 			await gameService.DeleteGameAsync(gameId);
 
@@ -119,11 +119,11 @@ namespace VideoGameLibrary.Services.Tests
 		[Test]
 		public async Task RestoreDeletedAsync_RestoresDeletedGame()
 		{
-			Game seededGame = await dbContext.Games.FirstOrDefaultAsync(); 
-			string gameId = seededGame?.Id.ToString(); 
-			await gameService.DeleteGameAsync(gameId);  
+			Game seededGame = await dbContext.Games.FirstOrDefaultAsync();
+			string gameId = seededGame?.Id.ToString();
+			await gameService.DeleteGameAsync(gameId);
 
-			await gameService.RestoreDeletedAsync(gameId); 
+			await gameService.RestoreDeletedAsync(gameId);
 
 			Game restoredGame = await dbContext.Games.FirstOrDefaultAsync(g => g.Id.ToString() == gameId);
 			Assert.IsNotNull(restoredGame);
@@ -141,21 +141,21 @@ namespace VideoGameLibrary.Services.Tests
 				Publisher = "Test Publisher",
 				CoverImg = "/images/test-game.jpg",
 				Price = 29.99m,
-				GenreId = 1, 
-				PlatformId = 1, 
+				GenreId = 1,
+				PlatformId = 1,
 				ReleaseDate = DateTime.UtcNow,
-				Rating = "E", 
-				NumberOfStars = "4.5" 
+				Rating = "E",
+				NumberOfStars = "4.5"
 			};
 
-			string userId = "12345678-1234-1234-1234-123456789abc"; 	
+			string userId = "12345678-1234-1234-1234-123456789abc";
 			string gameId = await gameService.AddGameAsync(model, userId);
-			
+
 			Assert.IsNotNull(gameId);
 			Assert.IsNotEmpty(gameId);
-		
+
 			Game addedGame = await dbContext.Games.FindAsync(Guid.Parse(gameId));
-			Assert.IsNotNull(addedGame);		
+			Assert.IsNotNull(addedGame);
 		}
 
 		[Test, Order(2)]

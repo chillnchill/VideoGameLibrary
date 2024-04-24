@@ -18,6 +18,7 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.AssemblyInfo.cs
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.sourcelink.json
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.csproj.CopyComplete
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Web.Infrastructure\obj\Debug\net6.0\refint\VideoGameLibrary.Web.Infrastructure.dll

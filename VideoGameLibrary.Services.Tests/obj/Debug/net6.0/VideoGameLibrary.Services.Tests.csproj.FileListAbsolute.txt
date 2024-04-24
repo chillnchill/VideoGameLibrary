@@ -351,3 +351,4 @@ C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Services.Tests\bin
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Services.Tests\bin\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.dll
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Services.Tests\bin\Debug\net6.0\VideoGameLibrary.pdb
 C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Services.Tests\bin\Debug\net6.0\VideoGameLibrary.Web.Infrastructure.pdb
+C:\Users\jojoc\Desktop\SoftUni\ASP.NET\Final\VideoGameLibrary.Services.Tests\obj\Debug\net6.0\VideoGameLibrary.Services.Tests.sourcelink.json

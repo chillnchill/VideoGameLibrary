@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VideoGameLibrary.Services.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdcf9ff37e554e1aa9459a707843a947241a9fe1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b71d4f454827286944e906cbee1d246d5fd8ca4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("VideoGameLibrary.Services.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VideoGameLibrary.Services.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

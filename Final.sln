@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoGameLibrary.Services.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BE594DFE-9E7D-46A0-973B-21EF4F8B0B2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoGameLibrary.Services.Tests", "VideoGameLibrary.Services.Tests\VideoGameLibrary.Services.Tests.csproj", "{13F80EE9-26F9-4BEB-8673-4D95BF38273F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoGameLibrary.Tests", "VideoGameLibrary.Services.Tests\VideoGameLibrary.Tests.csproj", "{13F80EE9-26F9-4BEB-8673-4D95BF38273F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

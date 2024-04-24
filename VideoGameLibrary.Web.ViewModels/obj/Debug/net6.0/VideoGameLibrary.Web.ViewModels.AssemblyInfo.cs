@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VideoGameLibrary.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdcf9ff37e554e1aa9459a707843a947241a9fe1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d22ca2b394d20c2e40b70690ccf9bf9ece36eea")]
 [assembly: System.Reflection.AssemblyProductAttribute("VideoGameLibrary.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VideoGameLibrary.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

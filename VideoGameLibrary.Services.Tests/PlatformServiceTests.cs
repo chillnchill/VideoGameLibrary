@@ -5,7 +5,7 @@ using VideoGameLibrary.Services.Data;
 using VideoGameLibrary.Web.ViewModels.Platform;
 using VideoGameLibrary.Data.Models;
 
-namespace VideoGameLibrary.Services.Tests
+namespace VideoGameLibrary.Tests
 {
 	using static DbSeeder;
 	public class PlatformServiceTests

@@ -7,7 +7,7 @@ using VideoGameLibrary.Web.ViewModels.Review;
 
 
 
-namespace VideoGameLibrary.Services.Tests
+namespace VideoGameLibrary.Tests
 {
 	using static DbSeeder;
 	public class ReviewServiceTests
@@ -31,14 +31,14 @@ namespace VideoGameLibrary.Services.Tests
 			IUserService userService = new UserService(dbContext);
 			reviewService = new ReviewService(dbContext, userService);
 
-			
+
 		}
 
 		[Test]
 		public async Task ReviewExistsByIdAsync_ReturnsTrue_WhenReviewExists()
 		{
 
-			var existingReviewId = dbContext.Reviews.First().Id.ToString(); 
+			var existingReviewId = dbContext.Reviews.First().Id.ToString();
 			var result = await reviewService.ReviewExistsByIdAsync(existingReviewId);
 			Assert.IsTrue(result);
 		}
@@ -46,7 +46,7 @@ namespace VideoGameLibrary.Services.Tests
 		[Test]
 		public async Task ReviewExistsByIdAsync_ReturnsFalse_WhenReviewDoesNotExist()
 		{
-			var nonExistingReviewId = Guid.NewGuid().ToString(); 
+			var nonExistingReviewId = Guid.NewGuid().ToString();
 
 			var result = await reviewService.ReviewExistsByIdAsync(nonExistingReviewId);
 

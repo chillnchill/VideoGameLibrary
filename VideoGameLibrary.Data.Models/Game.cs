@@ -9,7 +9,6 @@ namespace VideoGameLibrary.Data.Models
 		public Game()
 		{
 			Id = Guid.NewGuid();
-			Screenshots = new HashSet<Screenshot>();
 			Reviews = new HashSet<Review>();
 			Moderators = new HashSet<GameModerator>();
 		}
@@ -67,8 +66,6 @@ namespace VideoGameLibrary.Data.Models
 		public Guid OwnerId { get; set; }
 
 		public virtual ICollection<Review> Reviews { get; set; }
-
-		public virtual ICollection<Screenshot> Screenshots { get; set; }
 
 		public virtual ICollection<GameModerator> Moderators { get; set; }
 	}
